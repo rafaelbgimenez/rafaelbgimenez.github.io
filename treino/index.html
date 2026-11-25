@@ -260,7 +260,9 @@ details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:1
 .opt:hover{border-color:var(--ink)}
 .opt[aria-pressed=true]{border-color:var(--ink);background:var(--pan);box-shadow:inset 4px 0 0 var(--ink)}
 .opt[disabled]{opacity:.55;cursor:default;border-style:dashed}
-mark.cit{background:color-mix(in srgb,var(--yel) 40%,transparent);color:var(--ink);padding:.04em .4em;border-radius:.5em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
+.cit{text-decoration:none;background:color-mix(in srgb,var(--yel) 40%,transparent);color:var(--ink);padding:.04em .4em;border-radius:.5em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
+a.cit:hover{background:color-mix(in srgb,var(--yel) 65%,transparent);text-decoration:underline}
+a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
 .fx{font-size:14px;line-height:1.5;padding:9px 12px;border-radius:10px;background:var(--pan);border-left:3px solid var(--blue)}
 .fx:empty{display:none}
 .alerta{margin-top:8px;padding:10px 14px;border-radius:10px;background:var(--pan);border-left:4px solid var(--red);font-size:15px}
@@ -1119,10 +1121,11 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     return null;
   }
 
+  const REFS = {"Schoenfeld 2016": "https://doi.org/10.1007/s40279-016-0543-8", "Schoenfeld 2017": "https://doi.org/10.1080/02640414.2016.1210197", "Pelland 2026": "https://doi.org/10.1007/s40279-025-02344-w", "Ramos-Campo 2024": "https://doi.org/10.1519/JSC.0000000000004774", "Remmert 2025": "https://doi.org/10.51224/SRXIV.537", "Robinson 2024": "https://doi.org/10.1007/s40279-024-02069-2", "Morton 2016": "https://doi.org/10.1152/japplphysiol.00154.2016", "Singer 2024": "https://doi.org/10.3389/fspor.2024.1429789", "Plotkin 2022": "https://doi.org/10.7717/peerj.14142", "Kassiano 2022": "https://doi.org/10.1519/JSC.0000000000004258", "Maeo 2021": "https://doi.org/10.1249/MSS.0000000000002523", "Maeo 2022": "https://doi.org/10.1080/17461391.2022.2100279", "Kassiano 2025": "https://doi.org/10.1055/a-2517-0509", "Kinoshita 2026": "https://doi.org/10.1249/MSS.0000000000003957", "Kinoshita 2023": "https://doi.org/10.3389/fphys.2023.1272106", "Plotkin 2023": "https://doi.org/10.3389/fphys.2023.1279170", "Larsen 2025": "https://doi.org/10.3389/fphys.2025.1611468", "Andersen 2014": "https://pubmed.ncbi.nlm.nih.gov/24662157/", "Rodríguez-Ridao 2020": "https://doi.org/10.3390/ijerph17197339", "Bloomquist 2013": "https://doi.org/10.1007/s00421-013-2642-7", "Kubo 2019": "https://doi.org/10.1007/s00421-019-04181-y", "Wolf 2025": "https://doi.org/10.7717/peerj.18904", "Gschneidner 2025": "https://doi.org/10.51224/SRXIV.485"};
   const CIT = /(?<!\p{L})(\p{Lu}[\p{Ll}'’]+(?:-\p{Lu}\p{Ll}+)?(?: et al\.)? (?:19|20)\d{2}(?:, preprint)?)/gu;
   function grifa(root) {
     const t1 = new RegExp(CIT.source, 'u'), nos = [];
-    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => !n.parentElement || n.parentElement.closest('mark.cit,script,style,svg,button,textarea,.modal') || !t1.test(n.data) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => !n.parentElement || n.parentElement.closest('.cit,script,style,svg,button,textarea,.modal') || !t1.test(n.data) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
     while (w.nextNode()) nos.push(w.currentNode);
     for (const n of nos) {
       const fr = document.createDocumentFragment();
@@ -1131,9 +1134,11 @@ if (typeof module !== 'undefined') module.exports = FICHA;
         const par = n.data[at - 1] === '(' && n.data[at + m.length] === ')';
         const ini = par ? at - 1 : at;
         if (ini > i) fr.append(n.data.slice(i, ini));
-        const k = document.createElement('mark');
+        const url = REFS[m.replace(/, preprint$/, '')];
+        const k = document.createElement(url ? 'a' : 'mark');
         k.className = 'cit';
         k.textContent = m;
+        if (url) { k.href = url; k.target = '_blank'; k.rel = 'noopener'; k.title = 'Abrir o estudo'; }
         fr.append(k);
         i = at + m.length + (par ? 1 : 0);
         return m;
