@@ -58,17 +58,31 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{o
 .free #fw{grid-area:w}
 .free .note{grid-area:n;font-size:14px;color:var(--mut)}
 .free .facts{grid-area:f}
-.week{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
-.day{border:1.5px solid var(--ink);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;min-height:176px}
+.weekbox{background:var(--wk,var(--pan));border-radius:18px;padding:10px}
+.week{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:var(--cols,repeat(8,minmax(0,1fr)));gap:8px}
+.day{position:relative;border:1.5px solid var(--ink);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;min-height:176px;background:var(--bg)}
+.dh{display:flex;justify-content:space-between;gap:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:3px}
+.dh .m{display:none}
+.day .stretch{position:absolute;inset:0;border-radius:inherit;z-index:1}
+.day .stretch:focus-visible{outline:none}
+.day.lnk{transition:box-shadow .15s}
+.day.lnk:hover{box-shadow:0 0 0 1.5px var(--ink),0 6px 16px rgba(0,0,0,.08)}
+.day.lnk:has(.stretch:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
+.go{font-size:13px;font-weight:700}
+.wsum{color-scheme:dark;background:var(--bg);color:var(--ink);border:2px solid var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .wsum{color-scheme:light}}
+:root[data-theme=dark] .wsum{color-scheme:light}
+:root[data-theme=light] .wsum{color-scheme:dark}
+.wsum ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px}
 .day>b{font-size:13px;font-weight:600;color:var(--mut)}
 .day>strong{font:700 22px/1.05 "Barlow Condensed",sans-serif}
 .day ul{list-style:none;margin:0;padding:0;font-size:14px;display:grid;gap:3px}
 .day li{display:flex;align-items:center;gap:6px}
 .day li em{margin-left:auto;font-style:normal;font-weight:700;font-variant-numeric:tabular-nums}
 .day>small{margin-top:auto;font-size:13px;color:var(--mut)}
-.day.off{border:1.5px dashed var(--line);background:var(--pan);justify-content:flex-start}
-.day.off span{color:var(--mut);font-size:14px}
-@media(max-width:860px){.free .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "w" "c" "s" "n" "f"}.free .ctl{justify-items:start}.free .ctl .chips{justify-content:flex-start;flex-wrap:wrap}.week{grid-template-columns:minmax(0,1fr);gap:6px}.day{min-height:0;display:grid;grid-template-columns:3em minmax(0,1fr);column-gap:10px;row-gap:4px;padding:10px 12px}.day>b{grid-row:span 3;padding-top:5px}.day ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr));column-gap:14px}.day.off{padding-block:6px}}
+.day.off{border:1.5px dashed color-mix(in srgb,var(--mut) 45%,transparent);background:transparent;justify-content:flex-start;min-width:0}
+.day.off span{color:var(--mut);font-size:13px}
+@media(max-width:860px){.free .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "w" "c" "s" "n" "f"}.free .ctl{justify-items:start}.free .ctl .chips{justify-content:flex-start;flex-wrap:wrap}.week{grid-template-columns:minmax(0,1fr);gap:6px}.day{min-height:0;display:grid;grid-template-columns:3em minmax(0,1fr);column-gap:10px;row-gap:4px;padding:10px 12px}.day>b{grid-row:span 3;padding-top:5px}.day ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr));column-gap:14px}.day.off{padding-block:6px}.dh{grid-column:2}.dh span{display:none}.dh .m{display:inline}.day>small,.day .go,.day ul{grid-column:2}.wsum ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr))}}
 .facts{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px 40px;margin-top:8px}
 .facts h2{font-size:28px;margin-bottom:10px}
 .facts ol{margin:0;padding-left:22px;display:grid;gap:8px}
@@ -141,44 +155,60 @@ details.how summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;
 details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:15px}
 .ficha{border-top:1.5px solid var(--ink);background:var(--pan)}
 .ficha .lead{color:var(--ink)}
-.ficha .week{margin-top:22px}
-.ficha .day{background:var(--bg)}
-.ficha .day.off{background:transparent}
+.ficha .weekbox{--wk:var(--body);margin-top:22px}
 .av{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px}
 .av li{padding:10px 14px;border-radius:10px;background:var(--bg);border-left:4px solid var(--red);font-size:15px}
 .av li.info{border-left-color:var(--blue)}
 .av li.al,.av li.foco{border-left-color:var(--yel)}
-.dias{display:grid;gap:18px;margin-top:26px}
-.ses{background:var(--bg);border-radius:14px;padding:16px 18px;border-top:4px solid var(--ink)}
+.dias{display:grid;gap:18px;margin-top:14px}
+.dnav{position:sticky;top:var(--toph,60px);z-index:4;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-top:22px;padding:10px 0;background:var(--pan);box-shadow:0 0 0 100vmax var(--pan);clip-path:inset(0 -100vmax)}
+.dnav::-webkit-scrollbar{display:none}
+.dnav a{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--ink);background:var(--bg);font:600 15px Barlow,sans-serif;text-decoration:none;white-space:nowrap}
+.dnav a span{color:var(--mut)}
+.dnav a svg{width:13px;height:13px;flex:none;color:var(--mut)}
+.dnav a:hover{background:var(--pan)}
+.dnav a[aria-current=true]{background:var(--ink);color:var(--bg)}
+.dnav a[aria-current=true] span,.dnav a[aria-current=true] svg{color:inherit;opacity:.75}
+.ses{background:var(--bg);border-radius:14px;padding:16px 18px;border-top:4px solid var(--ink);scroll-margin-top:62px}
+.ses:focus{outline:none}
 .ses header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
 .ses h3{font-size:26px}
 .ses h3 span{color:var(--mut);font-weight:600;margin-right:6px}
 .ses header p{color:var(--mut);font-size:14px}
-.ex{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:8px 22px;padding:14px 0;border-bottom:1px solid var(--line)}
-.corpo{width:64px;height:70px;grid-row:span 2}
+.ex{display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-areas:"c h" "c v" "c t" ". s";gap:8px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ex:last-child{border-bottom:0}
+.corpo{grid-area:c;width:64px;height:70px}
 .corpo .base{fill:var(--body)}
 .corpo .mus{fill:var(--body2)}
 .corpo .alvo{fill:var(--c)}
 .corpo .aux{fill:var(--c);opacity:.38}
-.ex:last-child{border-bottom:0}
-.en strong{font-size:17px}
+.eh{grid-area:h}
+.eh strong{font-size:18px}
+.et{grid-area:t}
 .mt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:13px;color:var(--mut);margin-top:2px}
-.cue{margin-top:6px;font-size:15px}
-.why{font-size:14px;color:var(--mut)}
+.cue{font-size:15px}
+.why{font-size:14px;color:var(--mut);margin-top:2px}
 .obs,.tec{font-size:14px;margin-top:6px;padding-left:10px;border-left:3px solid var(--yel)}
-.ev{display:grid;grid-template-columns:7.4em 3.6em 5em 7.6em;gap:4px 16px;margin:0;align-self:start}
-.ev div:last-child dd{font:600 16px/1.6 Barlow,sans-serif}
+.ev{grid-area:v;justify-self:start;display:flex;flex-wrap:wrap;gap:6px 26px;margin:0;padding:8px 16px;border-radius:10px;background:var(--pan)}
 .ev div{display:grid}
-.ev dt{font-size:13px;color:var(--mut)}
-.ev dd{margin:0;font:700 21px/1.2 "Barlow Condensed",sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums}
-.swap{grid-column:2/-1;justify-self:start;font:600 14px Barlow,sans-serif;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.ev dt{font-size:12px;color:var(--mut)}
+.ev dd{margin:0;font:700 21px/1.15 "Barlow Condensed",sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ev div:last-child dd{font:600 16px/1.45 Barlow,sans-serif}
+.swap{grid-area:s;justify-self:start;font:600 14px Barlow,sans-serif;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .swap:hover{border-color:var(--ink)}
 .ghost{display:block;height:14px;width:min(70%,260px);border-radius:4px;background:var(--line);margin:5px 0 3px}
-.lk{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mut);margin-top:10px}
-.lk svg{width:16px;height:16px;flex:none}
+.ghost.l{height:10px;width:92%;margin:6px 0 0}
 .vazio{color:var(--mut);margin-top:8px}
-@media(max-width:720px){.ex{grid-template-columns:52px minmax(0,1fr);column-gap:12px}.corpo{width:52px;height:58px;grid-row:auto}.ev,.swap{grid-column:1/-1}.ev{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 10px}.ev dd{font-size:19px}.ses{padding:14px}}
-@media(max-width:400px){.ev{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lockwrap{display:grid;margin-top:4px}
+.lockwrap>.exs,.lockwrap>.lockcard{grid-area:1/1}
+.ses.lock .exs{filter:blur(5px);opacity:.7;user-select:none;pointer-events:none}
+.lockcard{position:sticky;top:calc(var(--toph,60px) + 84px);align-self:start;justify-self:center;margin:36px 0 28px;z-index:1;width:min(92%,400px);display:grid;justify-items:center;gap:10px;text-align:center;padding:22px 20px;border-radius:16px;background:var(--bg);border:2px solid var(--ink);box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.lki{width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center}
+.lki svg{width:20px;height:20px}
+.lockcard>b{font:800 26px/1 "Barlow Condensed",sans-serif}
+.lockcard p{font-size:14px;color:var(--mut)}
+.lockcard .btn{justify-self:stretch}
+@media(max-width:720px){.ex{grid-template-columns:52px minmax(0,1fr);grid-template-areas:"c h" "v v" "t t" "s s";column-gap:12px}.corpo{width:52px;height:58px}.ev{justify-self:stretch;justify-content:space-between;gap:6px 14px;padding:8px 12px}.ev dd{font-size:19px}.ses{padding:14px}}
 .pay{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;border:2px solid var(--ink);border-radius:16px;padding:22px;background:var(--bg)}
 .pay h3{font-size:28px}
 .pay ul{margin:10px 0 0;padding-left:20px;display:grid;gap:4px}
@@ -230,6 +260,9 @@ details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:1
 .opt:hover{border-color:var(--ink)}
 .opt[aria-pressed=true]{border-color:var(--ink);background:var(--pan);box-shadow:inset 4px 0 0 var(--ink)}
 .opt[disabled]{opacity:.55;cursor:default;border-style:dashed}
+mark.cit{background:color-mix(in srgb,var(--yel) 40%,transparent);color:var(--ink);padding:.04em .4em;border-radius:.5em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
+.fx{font-size:14px;line-height:1.5;padding:9px 12px;border-radius:10px;background:var(--pan);border-left:3px solid var(--blue)}
+.fx:empty{display:none}
 .alerta{margin-top:8px;padding:10px 14px;border-radius:10px;background:var(--pan);border-left:4px solid var(--red);font-size:15px}
 </style>
 </head>
@@ -276,15 +309,15 @@ details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:1
       <p class="lead">Exemplo preenchido: 4 dias, academia de bairro, foco em glúteos e ombros. Mude à vontade, a ficha atualiza na hora.</p>
       <div class="grid">
         <form id="form" novalidate>
-          <div class="fld" role="group" aria-labelledby="l-dias"><h3 id="l-dias">Dias que você treina</h3><div class="chips" id="f-dias"></div><p class="help" id="h-dias">De 2 a 6 dias.</p></div>
-          <div class="fld" role="group" aria-labelledby="l-dur"><h3 id="l-dur">Tempo por treino</h3><div class="chips" id="f-dur"></div></div>
-          <div class="fld" role="group" aria-labelledby="l-niv"><h3 id="l-niv">Experiência</h3><div class="chips" id="f-niv"></div></div>
-          <div class="fld" role="group" aria-labelledby="l-atual"><h3 id="l-atual">Como você treina hoje</h3><div class="chips" id="f-atual"></div><p class="help">Se a divisão sugerida for a que você já faz, a ficha começa cheia; se mudar, entra com 3 semanas de rampa.</p></div>
-          <div class="fld" role="group" aria-labelledby="l-split"><h3 id="l-split">Divisão</h3><div class="chips" id="f-split"></div></div>
+          <div class="fld" role="group" aria-labelledby="l-dias"><h3 id="l-dias">Dias que você treina</h3><div class="chips" id="f-dias"></div><p class="help" id="h-dias">De 2 a 6 dias.</p><p class="fx" id="x-dias"></p></div>
+          <div class="fld" role="group" aria-labelledby="l-dur"><h3 id="l-dur">Tempo por treino</h3><div class="chips" id="f-dur"></div><p class="fx" id="x-dur"></p></div>
+          <div class="fld" role="group" aria-labelledby="l-niv"><h3 id="l-niv">Experiência</h3><div class="chips" id="f-niv"></div><p class="fx" id="x-niv"></p></div>
+          <div class="fld" role="group" aria-labelledby="l-atual"><h3 id="l-atual">Como você treina hoje</h3><div class="chips" id="f-atual"></div><p class="fx" id="x-atual"></p></div>
+          <div class="fld" role="group" aria-labelledby="l-split"><h3 id="l-split">Divisão</h3><div class="chips" id="f-split"></div><p class="fx" id="x-split"></p></div>
           <div class="fld" role="group" aria-labelledby="l-acad"><h3 id="l-acad">Academia</h3><div class="chips" id="f-acad"></div>
             <p class="help">Cada tipo já vem com as máquinas típicas marcadas. Confira grupo por grupo e marque o que a sua academia tem: o gerador só usa isso.</p><details class="eq"><summary><span class="eqt"><b>Máquinas da sua academia</b><span id="f-eqn"></span></span><span class="eqc" aria-hidden="true"></span></summary><div class="eqb"><div class="eqhal"><h4 class="eqh">Halteres (peso máximo)</h4><div class="chips" id="f-hal"></div></div><div class="eqg" id="f-eq"></div></div></details>
           </div>
-          <div class="fld" role="group" aria-labelledby="l-foco"><h3 id="l-foco">Foco por músculo</h3><p class="help">Foco ganha mais séries por semana, Manter fica com menos. Com 2–3 focos cabe melhor.</p><div id="f-focos"></div><div id="f-tiers"></div></div>
+          <div class="fld" role="group" aria-labelledby="l-foco"><h3 id="l-foco">Foco por músculo</h3><p class="help">Foco ganha mais séries por semana, Manter fica com menos. O número à direita é o seu alvo de séries por semana. Com 2–3 focos cabe melhor.</p><div id="f-focos"></div><div id="f-tiers"></div></div>
         </form>
         <aside class="panel" id="panel" aria-live="polite">
           <h3 id="p-h"></h3>
@@ -907,17 +940,24 @@ if (typeof module !== 'undefined') module.exports = FICHA;
 
   const chip = (k, v, label, on, cls) => `<button type="button" class="chip${cls ? ' ' + cls : ''}" data-k="${k}" data-v="${v}" aria-pressed="${on}">${label}</button>`;
 
-  function semana(X) {
+  function semana(X, links) {
     const por = {};
     X.sessoes.forEach(S => { por[S.dia] = S; });
-    return '<ol class="week">' + F.DIAS.map((d, i) => {
+    const cols = F.DIAS.map((d, i) => por[i] ? 'minmax(0,1fr)' : 'minmax(0,.62fr)').concat('minmax(0,1.9fr)').join(' ');
+    const dh = '<p class="dh"><span>Músculo</span><span>séries</span><span class="m">Séries por músculo nesse treino</span></p>';
+    const dias = F.DIAS.map((d, i) => {
       const S = por[i];
       if (!S) return `<li class="day off"><b>${d}</b><span>Descanso</span></li>`;
       const per = {};
       S.rows.forEach(r => { per[r.m] = (per[r.m] || 0) + r.sets; });
       const lis = Object.keys(per).map(m => `<li><i class="sw t${X.cfg.tiers[m]}"></i>${F.MUSC[m].nome}<em>${per[m]}</em></li>`).join('');
-      return `<li class="day"><b>${d}</b><strong>${esc(S.nome)}</strong><ul>${lis || '<li>Nada coube aqui</li>'}</ul><small>${S.series} séries · ≈ ${S.min} min</small></li>`;
-    }).join('') + '</ol>';
+      const ir = links ? `<a class="stretch" href="#s-${i}" aria-label="Ir pro treino de ${d}: ${esc(S.nome)}"></a><span class="go" aria-hidden="true">Ver treino ↓</span>` : '';
+      return `<li class="day${links ? ' lnk' : ''}"><b>${d}</b><strong>${esc(S.nome)}</strong>${lis ? dh + `<ul>${lis}</ul>` : '<ul><li>Nada coube aqui</li></ul>'}<small>${S.rows.length} exercícios · ${S.series} séries · ≈ ${S.min} min</small>${ir}</li>`;
+    }).join('');
+    const ms = F.MK.filter(m => X.an.got[m] > 0);
+    const fr = ms.map(m => X.an.freq[m]), f0 = Math.min(...fr), f1 = Math.max(...fr);
+    const soma = `<li class="day wsum"><b>Semana</b><strong>Total da semana</strong><p class="dh"><span>Músculo</span><span>séries</span><span class="m">Séries por músculo na semana</span></p><ul>${ms.map(m => `<li><i class="sw t${X.cfg.tiers[m]}"></i>${F.MUSC[m].nome}<em>${X.an.got[m]}</em></li>`).join('')}</ul><small>${X.an.total} séries em ${X.sessoes.length} treinos · cada músculo ${f0 === f1 ? f0 : f0 + ' a ' + f1}x</small></li>`;
+    return `<div class="weekbox"><ol class="week" style="--cols:${cols}">${dias}${soma}</ol></div>`;
   }
 
   function renderLivre() {
@@ -926,11 +966,11 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     $('#fd').innerHTML = [2, 3, 4, 5, 6].map(n => `<button type="button" class="chip" data-nd="${n}" aria-pressed="${n === nd}">${n} dias</button>`).join('');
     $('#fs').innerHTML = opts.map((o, i) => `<button type="button" class="chip" data-fs="${o.id}" aria-pressed="${o.id === st.livre.split}">${esc(o.nome)}${i === 0 && opts.length > 1 ? '<small>padrão</small>' : ''}</button>`).join('');
     const X = F.gerar({ dias: F.DIAS_PADRAO[nd], dur: 75, nivel: 'int', split: st.livre.split, eq: F.eqDe(F.PRESETS.grande.eq, 60), tiers: TIERS_LIVRE });
-    $('#fw').innerHTML = semana(X);
+    $('#fw').innerHTML = semana(X, false);
     const fr = F.MK.filter(m => TIERS_LIVRE[m] > 0).map(m => X.an.freq[m]);
     const mins = X.sessoes.map(S => S.min);
     const f0 = Math.min(...fr), f1 = Math.max(...fr), a = Math.min(...mins), b = Math.max(...mins);
-    $('#fn').innerHTML = `<b>${esc(X.split.nome)}:</b> ${esc(X.split.desc)} Cada músculo ${f0 === f1 ? f0 : f0 + ' a ' + f1}x por semana, ${X.an.total} séries na semana, treinos de ${a === b ? '≈ ' + a : a + ' a ' + b} min. Os números de cada dia são as séries do volume Normal.`;
+    $('#fn').innerHTML = `<b>${esc(X.split.nome)}:</b> ${esc(X.split.desc)} Cada músculo ${f0 === f1 ? f0 : f0 + ' a ' + f1}x por semana, ${X.an.total} séries na semana, treinos de ${a === b ? '≈ ' + a : a + ' a ' + b} min. Os números de cada dia são as séries daquele treino, e o cartão Semana soma tudo (volume Normal pra todo mundo).`;
   }
 
   function renderForm() {
@@ -939,6 +979,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     const h = $('#h-dias');
     h.textContent = aviso || `${nd} ${nd === 1 ? 'dia marcado' : 'dias marcados'}, de 2 a 6.`;
     h.classList.toggle('err', !!aviso || nd < 2);
+    explica();
     $('#f-dur').innerHTML = [45, 60, 75, 90].map(v => chip('dur', v, `${v} min`, c.dur === v)).join('');
     $('#f-niv').innerHTML = NIV.map(([k, n, s]) => chip('nivel', k, `${n}<small>${s}</small>`, c.nivel === k)).join('');
     $('#f-atual').innerHTML = ATUAL.map(([k, n]) => chip('atual', k, n, c.atual === k)).join('');
@@ -956,6 +997,23 @@ if (typeof module !== 'undefined') module.exports = FICHA;
       const tv = R && !R.erro ? (R.T[m] ? `${R.T[m]} séries` : 'sem aparelho') : '';
       return `<div class="trow"><span class="tn">${F.MUSC[m].nome}</span><span class="seg" role="group" aria-label="${F.MUSC[m].nome}">${[0, 1, 2].map(t => `<button type="button" class="t${t}" data-m="${m}" data-t="${t}" aria-pressed="${c.tiers[m] === t}">${F.TIER[t]}</button>`).join('')}</span><span class="tv">${tv}</span></div>`;
     }).join('');
+  }
+
+  function explica() {
+    const c = st.cfg, nd = c.dias.length, ok = R && !R.erro;
+    const pd = { 2: 'Com 2 dias sai full body: cada músculo 2x por semana, mas cabe menos volume na semana.', 3: 'Com 3 dias sai full body ou Upper + Lower + Full body: cada músculo 2 a 3x por semana.', 4: 'Com 4 dias saem Upper/Lower, Anterior/Posterior, Torso/Limbs, PPL + 1 dia ou Full body 4x: cada músculo 2x por semana.', 5: 'Com 5 dias entram as combinações de PPL, Upper/Lower e Full body: cabe mais volume e cada treino fica mais curto.', 6: 'Com 6 dias entram as combinações de PPL, Upper/Lower, Anterior/Posterior e Full body: cabe mais volume e cada treino fica mais curto.' };
+    $('#x-dias').innerHTML = nd >= 2 ? `${pd[nd]} Os dias decidem a divisão e quanto volume cabe na semana; entre dois treinos do mesmo músculo ficam pelo menos 48\u00a0h.` : 'Marque pelo menos 2 dias: com 1 só não dá pra treinar cada músculo 2x.';
+    const cap = F.CAP[c.dur];
+    let td = `Cada treino de ${c.dur} min comporta até ~${cap} séries (~3 min por série, contando o descanso)`;
+    if (nd >= 2) td += `: com ${nd} dias, até ~${cap * nd} na semana`;
+    td += '.';
+    if (ok && R.an.total < R.an.alvo) td += ` A sua ficha ficou com ${R.an.total} das ${R.an.alvo} séries do alvo: o que não cabe sai primeiro de Manter, depois de Normal. Mais tempo ou mais um dia abrem espaço.`;
+    else if (ok) td += ` O seu alvo de ${R.an.alvo} séries coube inteiro.`;
+    $('#x-dur').innerHTML = td;
+    const pn = { ini: 'Iniciante: 70% das séries do intermediário, 2 séries por exercício e mais longe da falha (RIR 2–3 nos compostos). Sem as faixas de 4–6 reps: técnica antes de carga.', int: `Intermediário: o volume cheio do seu foco (peito no Normal, por exemplo, ${F.MUSC.peito.alvo[1]} séries por semana), perto da falha (RIR 0–3).`, ava: 'Avançado: o mesmo volume do intermediário, mais um top set opcional (4–6 reps + 2 back-offs) no 1º composto de cada treino. Volume acima disso só se estagnar, na reavaliação da semana 8.' };
+    $('#x-niv').innerHTML = pn[c.nivel];
+    $('#x-atual').innerHTML = !ok ? 'Se a divisão sugerida for a que você já faz, a ficha começa cheia; se mudar, entra com 3 semanas de rampa.' : R.rampa ? `${esc(R.split.nome)} é nova pra você: as semanas 1 a 3 entram com 60, 75 e 90% das séries pra adaptar, e da 4 em diante é a ficha cheia.` : `Você já treina em ${esc(R.split.nome.replace(/ \d+x$/, ''))}: a ficha começa cheia, sem rampa de entrada.`;
+    $('#x-split').innerHTML = !ok ? '' : `<b>${esc(R.split.nome)}:</b> ${esc(R.split.desc)}${R.auto ? ' Na automática o gerador testa todas as divisões pros seus dias e fica com a que encaixa mais volume sem furar 2x por semana e 48\u00a0h.' : ''}`;
   }
 
   function renderPanel() {
@@ -994,9 +1052,10 @@ if (typeof module !== 'undefined') module.exports = FICHA;
   function exAberto(r, ix) {
     const extra = (r.obs ? `<p class="obs">${esc(r.obs)}</p>` : '') + (r.tec ? `<p class="tec">${esc(r.tec)}</p>` : '');
     const troca = st.pago ? `<button type="button" class="swap" data-swap="${esc(r.key)}">${r.escolhido ? 'Trocado por você · trocar de novo' : 'Trocar exercício'}</button>` : '';
-    return `<div class="ex">${corpo(r.m, r.sec, R.cfg.tiers[r.m])}<div class="en"><strong>${ix + 1}. ${esc(r.nome)}</strong>${meta(r)}<p class="cue">${esc(r.cue)}</p><p class="why">${esc(r.why)}</p>${extra}</div>${valores(r)}${troca}</div>`;
+    return `<div class="ex">${corpo(r.m, r.sec, R.cfg.tiers[r.m])}<div class="eh"><strong>${ix + 1}. ${esc(r.nome)}</strong>${meta(r)}</div>${valores(r)}<div class="et"><p class="cue">${esc(r.cue)}</p><p class="why">${esc(r.why)}</p>${extra}</div>${troca}</div>`;
   }
-  const exFechado = r => `<div class="ex">${corpo(r.m, r.sec, R.cfg.tiers[r.m])}<div class="en"><span class="ghost"></span>${meta(r)}</div><dl class="ev"><div><dt>Séries</dt><dd>${r.sets}</dd></div></dl></div>`;
+  // prévia borrada: só barras no lugar do texto, nada da ficha paga vai pro HTML
+  const exFechado = (r, ix) => `<div class="ex">${corpo(r.m, r.sec, R.cfg.tiers[r.m])}<div class="eh"><span class="ghost" style="width:${46 + (ix * 23) % 38}%"></span>${meta(r)}</div><dl class="ev"><div><dt>Séries × reps</dt><dd>${r.sets}×•–•</dd></div><div><dt>RIR</dt><dd>•–•</dd></div><div><dt>Descanso</dt><dd>• min</dd></div><div><dt>Preparo</dt><dd>• FS</dd></div></dl><div class="et"><span class="ghost l"></span><span class="ghost l" style="width:${58 + (ix * 13) % 30}%"></span></div></div>`;
 
   function linhaDe(key) { for (const S of R.sessoes) for (const r of S.rows) if (r.key === key) return [S, r]; return [null, null]; }
   function abrirTroca(key) {
@@ -1026,12 +1085,13 @@ if (typeof module !== 'undefined') module.exports = FICHA;
   function sessao(S, aberto) {
     const tag = aberto && !st.pago ? '<span class="tag">aberto na prévia</span>' : '';
     const h = `<header><h3><span>${F.DIAS[S.dia]}</span>${esc(S.nome)}${tag}</h3><p>${S.rows.length} exercícios · ${S.series} séries · ≈ ${S.min} min</p></header>`;
-    if (!S.rows.length) return `<article class="ses">${h}<p class="vazio">Nenhum músculo coube nesse dia com esse foco e esses aparelhos: dá pra descansar.</p></article>`;
-    const rows = S.rows.map((r, ix) => aberto ? exAberto(r, ix) : exFechado(r)).join('');
-    return `<article class="ses">${h}<div class="exs">${rows}</div>${aberto ? '' : `<p class="lk">${LOCK}Exercícios e execução liberam na ficha completa.</p>`}</article>`;
+    const id = `id="s-${S.dia}" tabindex="-1"`;
+    if (!S.rows.length) return `<article class="ses" ${id}>${h}<p class="vazio">Nenhum músculo coube nesse dia com esse foco e esses aparelhos: dá pra descansar.</p></article>`;
+    if (aberto) return `<article class="ses" ${id}>${h}<div class="exs">${S.rows.map(exAberto).join('')}</div></article>`;
+    return `<article class="ses lock" ${id}>${h}<div class="lockwrap"><div class="exs" inert aria-hidden="true">${S.rows.map(exFechado).join('')}</div><div class="lockcard"><span class="lki">${LOCK}</span><b>Treino bloqueado</b><p>Os ${S.rows.length} exercícios desse dia, com séries, reps, RIR, descanso e execução, liberam na ficha completa.</p><button type="button" class="btn" data-unlock="${S.dia}">Desbloquear por R$ 9,90</button><a class="linkb" href="#pay">O que vem na ficha completa</a></div></div></article>`;
   }
 
-  const pagar = () => `<div class="pay"><div><h3>Ficha completa</h3><ul><li>Os ${R.sessoes.length} treinos com execução e o porquê de cada exercício</li><li>Progressão de 8 semanas: rampa de entrada, progressão dupla e deload</li><li>Troca de exercício entre os aparelhos que você marcou</li><li>PDF e planilha pra anotar as cargas</li></ul></div><div class="price"><b>R$ 9,90</b><small>pagamento único no Pix</small><button type="button" class="btn" id="abrir-pix">Desbloquear a ficha</button><small>Protótipo: o pagamento é simulado.</small></div></div>`;
+  const pagar = () => `<div class="pay" id="pay"><div><h3>Ficha completa</h3><ul><li>Os ${R.sessoes.length} treinos com execução e o porquê de cada exercício</li><li>Progressão de 8 semanas: rampa de entrada, progressão dupla e deload</li><li>Troca de exercício entre os aparelhos que você marcou</li><li>PDF e planilha pra anotar as cargas</li></ul></div><div class="price"><b>R$ 9,90</b><small>pagamento único no Pix</small><button type="button" class="btn" id="abrir-pix">Desbloquear a ficha</button><small>Protótipo: o pagamento é simulado.</small></div></div>`;
 
   const baixar = () => `<div class="dl"><h3>Ficha liberada</h3><button type="button" class="btn sm dl-only" id="dl-pdf">Baixar PDF</button><button type="button" class="btn sm dl-only" id="dl-xlsx">Baixar planilha</button><button type="button" class="btn sm alt" id="copiar">Copiar pra planilha</button><button type="button" class="linkb" id="relock">Bloquear de novo (demo)</button><p class="status" id="status" role="status">${esc(statusTxt)}</p></div>`;
 
@@ -1044,7 +1104,9 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     if (R.erro) { $('#ficha-in').innerHTML = `<h2>Sua ficha</h2><p class="lead">${esc(R.erro)}</p>`; return; }
     const avs = R.an.av.filter(a => a.tipo !== 'foco');
     const av = avs.length ? `<ul class="av">${avs.map(a => `<li class="${a.tipo}">${esc(a.txt)}</li>`).join('')}</ul>` : '';
-    $('#ficha-in').innerHTML = `<h2>Sua ficha: ${esc(R.split.nome)}</h2><p class="lead">${esc(porque())}</p>${semana(R)}${av}<div class="dias">${R.sessoes.map((S, i) => sessao(S, st.pago || i === 0)).join('')}</div>${st.pago ? baixar() + progressao() : pagar()}`;
+    const nav = `<nav class="dnav" aria-label="Ir pro treino do dia">${R.sessoes.map((S, i) => `<a href="#s-${S.dia}" data-ir="${S.dia}">${!st.pago && i > 0 ? LOCK : ''}<span>${F.DIAS[S.dia]}</span>${esc(S.nome)}</a>`).join('')}</nav>`;
+    $('#ficha-in').innerHTML = `<h2>Sua ficha: ${esc(R.split.nome)}</h2><p class="lead">${esc(porque())}</p>${semana(R, true)}${av}${nav}<div class="dias">${R.sessoes.map((S, i) => sessao(S, st.pago || i === 0)).join('')}</div>${st.pago ? baixar() + progressao() : pagar()}`;
+    marcaDia();
   }
 
   function chave(el) {
@@ -1052,9 +1114,43 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     if (el.id) return '#' + el.id;
     const d = el.dataset || {};
     if (d.m) return `[data-m="${d.m}"][data-t="${d.t}"]`;
-    for (const k of ['nd', 'fs', 'dia', 'swap']) if (d[k] != null) return `[data-${k}="${d[k]}"]`;
+    for (const k of ['nd', 'fs', 'dia', 'swap', 'unlock']) if (d[k] != null) return `[data-${k}="${d[k]}"]`;
     if (d.k) return `[data-k="${d.k}"][data-v="${d.v}"]`;
     return null;
+  }
+
+  const CIT = /(?<!\p{L})(\p{Lu}[\p{Ll}'’]+(?:-\p{Lu}\p{Ll}+)?(?: et al\.)? (?:19|20)\d{2}(?:, preprint)?)/gu;
+  function grifa(root) {
+    const t1 = new RegExp(CIT.source, 'u'), nos = [];
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => !n.parentElement || n.parentElement.closest('mark.cit,script,style,svg,button,textarea,.modal') || !t1.test(n.data) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    while (w.nextNode()) nos.push(w.currentNode);
+    for (const n of nos) {
+      const fr = document.createDocumentFragment();
+      let i = 0;
+      n.data.replace(CIT, (m, g, at) => {
+        const par = n.data[at - 1] === '(' && n.data[at + m.length] === ')';
+        const ini = par ? at - 1 : at;
+        if (ini > i) fr.append(n.data.slice(i, ini));
+        const k = document.createElement('mark');
+        k.className = 'cit';
+        k.textContent = m;
+        fr.append(k);
+        i = at + m.length + (par ? 1 : 0);
+        return m;
+      });
+      if (i < n.data.length) fr.append(n.data.slice(i));
+      n.replaceWith(fr);
+    }
+  }
+
+  // atalho do dia: marca o treino que está na tela
+  function marcaDia() {
+    const nav = $('.dnav');
+    if (!nav) return;
+    const lim = ($('.top') ? $('.top').offsetHeight : 60) + nav.offsetHeight + 24;
+    let cur = null;
+    document.querySelectorAll('.ses').forEach(a => { if (a.getBoundingClientRect().top <= lim) cur = a.id.slice(2); });
+    nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', String(a.dataset.ir === cur)));
   }
 
   function render() {
@@ -1064,6 +1160,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     renderForm();
     renderPanel();
     renderFicha();
+    grifa(document.body);
     if (fk) { const el = document.querySelector(fk); if (el) el.focus({ preventScroll: true }); }
   }
 
@@ -1180,8 +1277,9 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     }
     $('#qr').innerHTML = `<g fill="#141414">${h}${canto(0, 0)}${canto(N - 7, 0)}${canto(0, N - 7)}</g>`;
   }
-  function abrirPix() { desenhaQR(); $('#pix').hidden = false; $('#pix-ok').focus(); }
-  function fecharPix() { $('#pix').hidden = true; const b = $('#abrir-pix'); if (b) b.focus(); }
+  let pixDe = null;
+  function abrirPix(de) { pixDe = de || null; desenhaQR(); $('#pix').hidden = false; $('#pix-ok').focus(); }
+  function fecharPix() { $('#pix').hidden = true; const b = pixDe && pixDe.isConnected ? pixDe : $('#abrir-pix'); if (b) b.focus({ preventScroll: true }); }
 
   const presetIgual = c => Object.keys(F.PRESETS).find(p => F.PRESETS[p].halter === c.halter && F.PRESETS[p].eq.length === c.eq.length && F.PRESETS[p].eq.every(x => c.eq.includes(x))) || 'custom';
   function mudou() {
@@ -1221,13 +1319,17 @@ if (typeof module !== 'undefined') module.exports = FICHA;
       if (d.esc) { const k = trocaKey; st.troca[k] = d.esc; $('#troca').hidden = true; trocaKey = null; render(); const b = document.querySelector(`[data-swap="${k}"]`); if (b) b.focus(); return; }
       if (b.id === 'tr-reset') { const k = trocaKey; delete st.troca[k]; $('#troca').hidden = true; trocaKey = null; render(); const bb = document.querySelector(`[data-swap="${k}"]`); if (bb) bb.focus(); return; }
       if (b.id === 'tr-x') { fecharTroca(); return; }
-      if (b.id === 'abrir-pix') abrirPix();
+      if (d.unlock != null) { st.vai = +d.unlock; abrirPix(b); return; }
+      if (b.id === 'abrir-pix') { st.vai = null; abrirPix(b); }
       else if (b.id === 'pix-ok') {
         st.pago = true;
-        fecharPix();
+        $('#pix').hidden = true;
         render();
         if (DL) { lib('pdf').catch(() => {}); lib('xlsx').catch(() => {}); }
-        $('#ficha').scrollIntoView();
+        const alvo = (st.vai != null && document.getElementById('s-' + st.vai)) || $('#ficha');
+        st.vai = null;
+        alvo.scrollIntoView();
+        alvo.focus({ preventScroll: true });
       }
       else if (b.id === 'pix-x') fecharPix();
       else if (b.id === 'relock') { st.pago = false; st.troca = {}; statusTxt = ''; render(); }
@@ -1249,6 +1351,8 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     $('#form').addEventListener('submit', e => e.preventDefault());
   }
 
+  function topo() { const t = $('.top'); if (t) document.documentElement.style.setProperty('--toph', t.offsetHeight + 'px'); }
+  let rafDia = 0;
   function boot(data) {
     st = JSON.parse(JSON.stringify(DEF));
     try {
@@ -1261,6 +1365,9 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     if (data && data.cfg) st = { ...st, ...data };
     bind();
     render();
+    topo();
+    addEventListener('resize', topo);
+    addEventListener('scroll', () => { if (!rafDia) rafDia = requestAnimationFrame(() => { rafDia = 0; marcaDia(); }); }, { passive: true });
   }
 
   (async () => {
