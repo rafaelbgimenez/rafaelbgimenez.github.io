@@ -4,7 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Ficha de treino</title>
+<title>Ficha de treino baseada em ciência</title>
+<meta name="description" content="Ficha de treino montada com base em estudo: escolha seus dias, as máquinas da sua academia e o foco de cada músculo. Veja a divisão e o volume de graça.">
+<meta name="theme-color" content="#141414">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ficha de treino baseada em ciência">
+<meta property="og:description" content="Escolha seus dias, as máquinas da sua academia e o foco de cada músculo. A divisão e o volume saem de estudos, com referência em cada escolha.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23141414'/%3E%3Crect x='4' y='14' width='24' height='4' rx='2' fill='%23fff'/%3E%3Crect x='7' y='8' width='5' height='16' rx='2' fill='%23d42a22'/%3E%3Crect x='20' y='8' width='5' height='16' rx='2' fill='%23d42a22'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,167 +24,181 @@
    COLOUR paper white or rubber black ground, ink, plate red (Foco), blue (Normal), yellow (Manter)
    TYPE Barlow Condensed 700-800 display + Barlow text
    LAYOUT laptop: title with day chips at right, full-width week grid, then form beside a sticky volume panel, then the ficha; phone: title, week list, chips, form, volume, ficha */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#121212);--ink:light-dark(#141414,#f2f2ee);--mut:light-dark(#5d5d58,#a9a9a3);--line:light-dark(#e2e2dc,#30302d);--pan:light-dark(#f4f4f0,#1d1d1b);--red:light-dark(#d42a22,#ff6b5e);--blue:light-dark(#1f5fd6,#6d9dff);--yel:light-dark(#efb800,#ffd447);--on-red:light-dark(#ffffff,#141414);--on-blue:light-dark(#ffffff,#141414);--on-yel:#141414;--body:light-dark(#e7e7e1,#2b2b28);--body2:light-dark(#d3d3cb,#3b3b37)}
+:root{--fd:"Barlow Condensed","Arial Narrow",sans-serif;--ft:Barlow,system-ui,sans-serif;color-scheme:light dark;--bg:light-dark(#ffffff,#121212);--ink:light-dark(#141414,#f2f2ee);--mut:light-dark(#5d5d58,#a9a9a3);--line:light-dark(#e2e2dc,#30302d);--pan:light-dark(#f4f4f0,#1d1d1b);--red:light-dark(#d42a22,#ff6b5e);--blue:light-dark(#1f5fd6,#6d9dff);--yel:light-dark(#efb800,#ffd447);--on-red:light-dark(#ffffff,#141414);--on-blue:light-dark(#ffffff,#141414);--on-yel:#141414;--body:light-dark(#e7e7e1,#2b2b28);--body2:light-dark(#d3d3cb,#3b3b37)}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:76px;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.01em;text-wrap:balance;margin:0}
-h1{font-size:clamp(36px,5.2vw,52px)}
-h2{font-size:clamp(32px,4vw,44px)}
-h3{font-size:22px;font-weight:700}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--ft);overflow-x:clip}
+h1,h2,h3{font-family:var(--fd);font-weight:800;line-height:1.05;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(36px,5.2vw,48px)}
+h2{font-size:clamp(32px,4vw,36px)}
+h3{font-size:20px;font-weight:700}
 p{margin:0}
 a{color:inherit}
-.band{padding-block:clamp(28px,4vw,56px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(32px,4vw,48px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1240px;margin:0 auto}
 .top{position:sticky;top:0;z-index:6;background:var(--bg);border-bottom:1.5px solid var(--ink);display:flex;align-items:center;gap:12px;padding:8px max(5vw,16px)}
-.mark{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 28px/1 "Barlow Condensed",sans-serif}
+.mark{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 24px/1 var(--fd)}
 .mark svg{width:26px;height:26px;flex:none}
-.mark small{font:500 13px Barlow,sans-serif;color:var(--mut)}
+.mark small{font:500 14px var(--ft);color:var(--mut)}
 .nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto}
-.nav a{flex:none;text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:8px}
+.nav a{flex:none;text-decoration:none;font-weight:600;font-size:14px;padding:12px 12px;border-radius:8px}
 .nav a:hover{background:var(--pan)}
-@media(max-width:520px){.mark small{display:none}.nav a{padding:10px 7px;font-size:14px}}
-.lead{font-size:17px;color:var(--mut);max-width:62ch;margin-top:12px}
+@media(max-width:520px){.mark small{display:none}.nav a{padding:12px 8px;font-size:14px}}
+.lead{font-size:16px;color:var(--mut);max-width:62ch;margin-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:600 16px Barlow,sans-serif;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
-.chip small{font-weight:500;opacity:.75;margin-left:4px;font-size:13px}
+.chip{font:600 16px var(--ft);min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip small{font-weight:500;opacity:.75;margin-left:4px;font-size:14px}
 .chip:hover{background:var(--pan)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--bg)}
-.chip.dd{min-width:56px;padding:0 10px;border-radius:10px}
+.chip.dd{min-width:56px;padding:0 12px;border-radius:8px}
 button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .t0{--c:var(--yel);--on:var(--on-yel)}
 .t1{--c:var(--blue);--on:var(--on-blue)}
 .t2{--c:var(--red);--on:var(--on-red)}
 .sw{display:inline-block;width:10px;height:14px;border-radius:2px;flex:none;background:var(--c)}
-.free .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t c" "s s" "w w" "n n" "f f";gap:18px 32px}
+.free .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t c" "s s" "w w" "n n" "f f";gap:16px 32px}
 .free .spl{grid-area:s}
+.spk{display:grid;gap:12px}
+#f-split .spk{margin-top:12px}
+.spg{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:8px 16px;align-items:start}
+.spg>h3{font:700 18px/1.1 var(--fd);margin:0;padding-top:12px}
+.spo{display:flex;flex-wrap:wrap;gap:8px}
+.sc{display:grid;gap:8px;min-width:15em;padding:12px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);text-align:left;cursor:pointer;font:600 14px/1.2 var(--ft)}
+.sc:hover{border-color:var(--ink)}
+.sc:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.sc[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);background:var(--pan)}
+.sc small{color:var(--mut);font-weight:500;font-size:14px;margin-left:8px}
+.tl{display:flex;gap:2px}
+.tl i{font-style:normal;flex:1;min-width:2.8em;text-align:center;font:700 12px/22px var(--fd);border-radius:4px;background:var(--ink);color:var(--bg)}
+.tl i.x{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media(max-width:860px){.spg{grid-template-columns:minmax(0,1fr)}.spg>h3{padding-top:0}.spo .sc{flex:1 1 13em}}
+
 .free .ttl{grid-area:t}
-.free .ctl{grid-area:c;align-self:end;display:grid;gap:10px;justify-items:end}
+.free .ctl{grid-area:c;align-self:end;display:grid;gap:12px;justify-items:end}
 .free .ctl .chips{justify-content:flex-end;flex-wrap:nowrap}
 .free #fw{grid-area:w}
 .free .note{grid-area:n;font-size:14px;color:var(--mut)}
 .free .facts{grid-area:f}
-.weekbox{background:var(--wk,var(--pan));border-radius:18px;padding:10px}
+.weekbox{background:var(--wk,var(--pan));border-radius:16px;padding:12px}
 .week{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:var(--cols,repeat(8,minmax(0,1fr)));gap:8px}
-.day{position:relative;border:1.5px solid var(--ink);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;min-height:176px;background:var(--bg)}
-.dh{display:flex;justify-content:space-between;gap:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:3px}
+.day{position:relative;border:1.5px solid var(--ink);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:176px;background:var(--bg)}
+.dh{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:2px}
 .dh .m{display:none}
 .day .stretch{position:absolute;inset:0;border-radius:inherit;z-index:1}
 .day .stretch:focus-visible{outline:none}
 .day.lnk{transition:box-shadow .15s}
 .day.lnk:hover{box-shadow:0 0 0 1.5px var(--ink),0 6px 16px rgba(0,0,0,.08)}
 .day.lnk:has(.stretch:focus-visible){outline:3px solid var(--blue);outline-offset:2px}
-.go{font-size:13px;font-weight:700}
+.go{font-size:14px;font-weight:700}
 .wsum{color-scheme:dark;background:var(--bg);color:var(--ink);border:2px solid var(--ink)}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .wsum{color-scheme:light}}
 :root[data-theme=dark] .wsum{color-scheme:light}
 :root[data-theme=light] .wsum{color-scheme:dark}
-.wsum ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px}
-.day>b{font-size:13px;font-weight:600;color:var(--mut)}
-.day>strong{font:700 22px/1.05 "Barlow Condensed",sans-serif}
-.day ul{list-style:none;margin:0;padding:0;font-size:14px;display:grid;gap:3px}
-.day li{display:flex;align-items:center;gap:6px}
+.wsum ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}
+.day>b{font-size:14px;font-weight:600;color:var(--mut)}
+.day>strong{font:700 20px/1.05 var(--fd)}
+.day ul{list-style:none;margin:0;padding:0;font-size:14px;display:grid;gap:2px}
+.day li{display:flex;align-items:center;gap:8px}
 .day li em{margin-left:auto;font-style:normal;font-weight:700;font-variant-numeric:tabular-nums}
-.day>small{margin-top:auto;font-size:13px;color:var(--mut)}
+.day>small{margin-top:auto;font-size:14px;color:var(--mut)}
 .day.off{border:1.5px dashed color-mix(in srgb,var(--mut) 45%,transparent);background:transparent;justify-content:flex-start;min-width:0}
-.day.off span{color:var(--mut);font-size:13px}
-@media(max-width:860px){.free .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "w" "c" "s" "n" "f"}.free .ctl{justify-items:start}.free .ctl .chips{justify-content:flex-start;flex-wrap:wrap}.week{grid-template-columns:minmax(0,1fr);gap:6px}.day{min-height:0;display:grid;grid-template-columns:3em minmax(0,1fr);column-gap:10px;row-gap:4px;padding:10px 12px}.day>b{grid-row:span 3;padding-top:5px}.day ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr));column-gap:14px}.day.off{padding-block:6px}.dh{grid-column:2}.dh span{display:none}.dh .m{display:inline}.day>small,.day .go,.day ul{grid-column:2}.wsum ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr))}}
+.day.off span{color:var(--mut);font-size:14px}
+@media(max-width:860px){.free .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "c" "s" "w" "n" "f"}.free .ctl{justify-items:start}.free .ctl .chips{justify-content:flex-start;flex-wrap:wrap}.week{grid-template-columns:minmax(0,1fr);gap:8px}.day{min-height:0;display:grid;grid-template-columns:3em minmax(0,1fr);column-gap:12px;row-gap:4px;padding:12px 12px}.day>b{grid-row:span 3;padding-top:4px}.day ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr));column-gap:12px}.day.off{padding-block:8px}.dh{grid-column:2}.dh span{display:none}.dh .m{display:inline}.day>small,.day .go,.day ul{grid-column:2}.wsum ul{grid-template-columns:repeat(auto-fill,minmax(9em,1fr))}}
 .facts{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px 40px;margin-top:8px}
-.facts h2{font-size:28px;margin-bottom:10px}
-.facts ol{margin:0;padding-left:22px;display:grid;gap:8px}
-.cta{border:2px solid var(--ink);border-radius:14px;padding:20px;display:grid;gap:12px;align-self:start;background:var(--pan)}
-.cta p{font-size:17px}
+.facts h2{font-size:24px;margin-bottom:12px}
+.facts ol{margin:0;padding-left:24px;display:grid;gap:8px}
+.cta{border:2px solid var(--ink);border-radius:12px;padding:24px;display:grid;gap:12px;align-self:start;background:var(--pan)}
+.cta p{font-size:16px}
 @media(max-width:720px){.facts{grid-template-columns:minmax(0,1fr)}}
-.btn{font:700 17px Barlow,sans-serif;min-height:48px;padding:0 22px;border-radius:10px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;justify-self:start}
+.btn{font:700 16px var(--ft);min-height:48px;padding:0 24px;border-radius:8px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;justify-self:start}
 .btn.alt{background:transparent;color:var(--ink)}
-.btn.sm{min-height:44px;font-size:15px;padding:0 16px}
+.btn.sm{min-height:44px;font-size:14px;padding:0 16px}
 .btn[disabled]{opacity:.5;cursor:default}
 .tool{border-top:1.5px solid var(--ink)}
-.tool .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:start;margin-top:20px}
-.fld{display:grid;gap:10px;padding:16px 0;border-top:1.5px solid var(--line)}
+.tool .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:start;margin-top:24px}
+.fld{display:grid;gap:12px;padding:16px 0;border-top:1.5px solid var(--line)}
 .fld:first-child{border-top:0;padding-top:0}
 .fld h3{font-size:20px}
 .help{font-size:14px;color:var(--mut)}
 .help.err{color:var(--red);font-weight:600}
-details.eq{border:2px solid var(--ink);border-radius:14px;margin-top:10px;background:var(--bg,#fff)}
-details.eq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px}
+details.eq{border:2px solid var(--ink);border-radius:12px;margin-top:12px;background:var(--bg,#fff)}
+details.eq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px}
 details.eq summary::-webkit-details-marker{display:none}
 details.eq .eqt{display:flex;flex-direction:column;gap:2px}
-details.eq .eqt b{font-size:17px;font-weight:700}
+details.eq .eqt b{font-size:16px;font-weight:700}
 details.eq #f-eqn{color:var(--mut);font-weight:500;font-size:14px}
-details.eq .eqc{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+details.eq .eqc{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 12px;font-weight:700;font-size:14px;white-space:nowrap}
 details.eq .eqc::before{content:'Conferir e editar'}
 details.eq[open] .eqc::before{content:'Fechar'}
 details.eq .eqc::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
 details.eq[open] .eqc::after{transform:rotate(-135deg) translate(-2px,0)}
 details.eq summary:hover .eqc{opacity:.85}
-details.eq .eqb{padding:0 14px 14px;border-top:1px solid var(--line,#ddd)}
-.eqg{display:grid;grid-template-columns:repeat(auto-fit,minmax(15em,1fr));gap:10px;margin-top:10px}
+details.eq .eqb{padding:0 12px 12px;border-top:1px solid var(--line,#ddd)}
+.eqg{display:grid;grid-template-columns:repeat(auto-fit,minmax(15em,1fr));gap:12px;margin-top:12px}
 .eqg fieldset,.eqhal{border:1px solid var(--line);border-radius:12px;margin:0;padding:0 12px 8px;background:var(--pan);display:block;min-width:0;align-self:start}
 .eqg .ck{display:flex}
-.eqg legend{float:left;width:100%;display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.04em;padding:10px 0 6px;margin-bottom:4px;border-bottom:1px solid var(--line)}
-.eqg legend small{font-weight:500;color:var(--mut);text-transform:none;letter-spacing:0;font-size:13px}
+.eqg legend{float:left;width:100%;display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;padding:12px 0 8px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+.eqg legend small{font-weight:500;color:var(--mut);text-transform:none;letter-spacing:0;font-size:14px}
 .eqg legend+*{clear:both}
 .eqhal{margin-top:12px;padding-bottom:12px}
-.eqh{font:700 15px Barlow,sans-serif;text-transform:uppercase;letter-spacing:.04em;margin:0 0 10px;padding:10px 0 6px;border-bottom:1px solid var(--line)}
-.ck{display:flex;align-items:center;gap:10px;min-height:40px;font-size:15px;cursor:pointer}
+.eqh{font:700 14px var(--ft);text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px;padding:12px 0 8px;border-bottom:1px solid var(--line)}
+.ck{display:flex;align-items:center;gap:12px;min-height:40px;font-size:14px;cursor:pointer}
 .ck input{width:20px;height:20px;accent-color:var(--ink);flex:none}
-.trow{display:grid;grid-template-columns:7.5em minmax(0,1fr) 4.6em;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.trow{display:grid;grid-template-columns:7.5em minmax(0,1fr) 4.6em;align-items:center;gap:12px;padding:4px 0;border-bottom:1px solid var(--line)}
 .tn{font-weight:600}
-.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1.5px solid var(--ink);border-radius:10px;overflow:hidden}
-.seg button{min-height:44px;border:0;border-left:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 15px Barlow,sans-serif;cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1.5px solid var(--ink);border-radius:8px;overflow:hidden}
+.seg button{min-height:44px;border:0;border-left:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 14px var(--ft);cursor:pointer}
 .seg button:first-child{border-left:0}
 .seg button:hover{background:var(--pan)}
 .seg button[aria-pressed=true]{background:var(--c);color:var(--on)}
 .tv{text-align:right;font-variant-numeric:tabular-nums;color:var(--mut);font-size:14px;white-space:nowrap}
 @media(max-width:440px){.trow{grid-template-columns:minmax(0,1fr) auto}.seg{grid-column:1/-1;grid-row:2}}
-.panel{position:sticky;top:76px;border:1.5px solid var(--ink);border-radius:14px;padding:18px;display:grid;gap:4px}
-.panel h3{font-size:26px}
-.tag{font:600 13px Barlow,sans-serif;background:var(--pan);border:1px solid var(--line);border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px;letter-spacing:0}
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--mut);margin-top:10px}
-.legend span{display:flex;align-items:center;gap:6px}
-.vol{display:grid;gap:5px;margin-top:8px}
-.vrow{display:grid;grid-template-columns:7.2em minmax(0,1fr) 3.4em;align-items:center;gap:10px}
+.panel{position:sticky;top:76px;border:1.5px solid var(--ink);border-radius:12px;padding:16px;display:grid;gap:4px}
+.panel h3{font-size:24px}
+.tag{font:600 14px var(--ft);background:var(--pan);border:1px solid var(--line);border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:8px;letter-spacing:0}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;color:var(--mut);margin-top:12px}
+.legend span{display:flex;align-items:center;gap:8px}
+.vol{display:grid;gap:4px;margin-top:8px}
+.vrow{display:grid;grid-template-columns:7.2em minmax(0,1fr) 3.4em;align-items:center;gap:12px}
 .vn{font-size:14px;font-weight:600}
 .sleeve{display:flex;align-items:center;gap:2px;height:30px;background:linear-gradient(var(--line),var(--line)) center/100% 4px no-repeat}
 .pl{flex:0 0 calc((100% - 38px)/20);height:22px;border-radius:2px;background:var(--c);box-shadow:inset 2px 0 0 rgba(255,255,255,.35),inset -1px 0 0 rgba(0,0,0,.2)}
 .pl.t2{height:30px}
 .pl.t0{height:16px}
 .pl.miss{background:transparent;box-shadow:none;border:1.5px dashed var(--c)}
-.vv{text-align:right;font:700 19px "Barlow Condensed",sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vv{text-align:right;font:700 18px var(--fd);font-variant-numeric:tabular-nums;white-space:nowrap}
 .vv small{font-weight:600;color:var(--mut);font-size:14px}
 .panel .btn{margin-top:12px}
-.bar{display:none}
-@media(max-width:900px){.tool .grid{grid-template-columns:minmax(0,1fr)}.panel{position:static}.bar{display:flex;position:sticky;bottom:0;z-index:5;margin:18px calc(-1*max(5vw,16px)) calc(-1*clamp(28px,4vw,56px));padding:10px max(5vw,16px) calc(10px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);align-items:center;justify-content:space-between;gap:12px;font-size:15px}.bar .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}}
-details.how{margin-top:20px;border-top:1.5px solid var(--line);padding-top:8px}
+@media(max-width:900px){.tool .grid{grid-template-columns:minmax(0,1fr)}.panel{position:static}}
+details.how{margin-top:24px;border-top:1.5px solid var(--line);padding-top:8px}
 details.how summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
-details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+details.how ul{margin:4px 0 0;padding-left:24px;display:grid;gap:8px;font-size:14px}
 .ficha{border-top:1.5px solid var(--ink);background:var(--pan)}
 .ficha .lead{color:var(--ink)}
-.ficha .weekbox{--wk:var(--body);margin-top:22px}
-.av{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px}
-.av li{padding:10px 14px;border-radius:10px;background:var(--bg);border-left:4px solid var(--red);font-size:15px}
+.ficha .weekbox{--wk:var(--body);margin-top:24px}
+.av{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.av li{padding:12px 12px;border-radius:8px;background:var(--bg);border-left:4px solid var(--red);font-size:14px}
 .av li.info{border-left-color:var(--blue)}
 .av li.al,.av li.foco{border-left-color:var(--yel)}
-.dias{display:grid;gap:18px;margin-top:14px}
-.dnav{position:sticky;top:var(--toph,60px);z-index:4;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-top:22px;padding:10px 0;background:var(--pan);box-shadow:0 0 0 100vmax var(--pan);clip-path:inset(0 -100vmax)}
+.dias{display:grid;gap:16px;margin-top:12px}
+.dnav{position:sticky;top:var(--toph,60px);z-index:4;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:24px;padding:12px 0;background:var(--pan);box-shadow:0 0 0 100vmax var(--pan);clip-path:inset(0 -100vmax)}
 .dnav::-webkit-scrollbar{display:none}
-.dnav a{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--ink);background:var(--bg);font:600 15px Barlow,sans-serif;text-decoration:none;white-space:nowrap}
+.dnav a{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border-radius:999px;border:1.5px solid var(--ink);background:var(--bg);font:600 14px var(--ft);text-decoration:none;white-space:nowrap}
 .dnav a span{color:var(--mut)}
 .dnav a svg{width:13px;height:13px;flex:none;color:var(--mut)}
 .dnav a:hover{background:var(--pan)}
 .dnav a[aria-current=true]{background:var(--ink);color:var(--bg)}
 .dnav a[aria-current=true] span,.dnav a[aria-current=true] svg{color:inherit;opacity:.75}
-.ses{background:var(--bg);border-radius:14px;padding:16px 18px;border-top:4px solid var(--ink);scroll-margin-top:62px}
+.ses{background:var(--bg);border-radius:12px;padding:16px 16px;border-top:4px solid var(--ink);scroll-margin-top:62px}
 .ses:focus{outline:none}
 .ses header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
-.ses h3{font-size:26px}
-.ses h3 span{color:var(--mut);font-weight:600;margin-right:6px}
+.ses h3{font-size:24px}
+.ses h3 span{color:var(--mut);font-weight:600;margin-right:8px}
 .ses header p{color:var(--mut);font-size:14px}
-.ex{display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-areas:"c h" "c v" "c t" ". s";gap:8px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ex{display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-areas:"c h" "c v" "c t" ". s";gap:8px 24px;padding:12px 0;border-bottom:1px solid var(--line)}
 .ex:last-child{border-bottom:0}
 .corpo{grid-area:c;width:64px;height:70px}
 .corpo .base{fill:var(--body)}
@@ -185,96 +208,182 @@ details.how ul{margin:4px 0 0;padding-left:20px;display:grid;gap:6px;font-size:1
 .eh{grid-area:h}
 .eh strong{font-size:18px}
 .et{grid-area:t}
-.mt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:13px;color:var(--mut);margin-top:2px}
-.cue{font-size:15px}
+.mt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:14px;color:var(--mut);margin-top:2px}
+.cue{font-size:14px}
 .why{font-size:14px;color:var(--mut);margin-top:2px}
-.obs,.tec{font-size:14px;margin-top:6px;padding-left:10px;border-left:3px solid var(--yel)}
-.ev{grid-area:v;justify-self:start;display:flex;flex-wrap:wrap;gap:6px 26px;margin:0;padding:8px 16px;border-radius:10px;background:var(--pan)}
+.obs,.tec{font-size:14px;margin-top:8px;padding-left:12px;border-left:3px solid var(--yel)}
+.ev{grid-area:v;justify-self:start;display:flex;flex-wrap:wrap;gap:8px 24px;margin:0;padding:8px 16px;border-radius:8px;background:var(--pan)}
 .ev div{display:grid}
 .ev dt{font-size:12px;color:var(--mut)}
-.ev dd{margin:0;font:700 21px/1.15 "Barlow Condensed",sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums}
-.ev div:last-child dd{font:600 16px/1.45 Barlow,sans-serif}
-.swap{grid-area:s;justify-self:start;font:600 14px Barlow,sans-serif;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.ev dd{margin:0;font:700 20px/1.15 var(--fd);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ev div:last-child dd{font:600 16px/1.45 var(--ft)}
+.swap{grid-area:s;justify-self:start;font:600 14px var(--ft);min-height:40px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .swap:hover{border-color:var(--ink)}
-.ghost{display:block;height:14px;width:min(70%,260px);border-radius:4px;background:var(--line);margin:5px 0 3px}
-.ghost.l{height:10px;width:92%;margin:6px 0 0}
+.ghost{display:block;height:14px;width:min(70%,260px);border-radius:4px;background:var(--line);margin:4px 0 2px}
+.ghost.l{height:10px;width:92%;margin:8px 0 0}
 .vazio{color:var(--mut);margin-top:8px}
 .lockwrap{display:grid;margin-top:4px}
 .lockwrap>.exs,.lockwrap>.lockcard{grid-area:1/1}
 .ses.lock .exs{filter:blur(5px);opacity:.7;user-select:none;pointer-events:none}
-.lockcard{position:sticky;top:calc(var(--toph,60px) + 84px);align-self:start;justify-self:center;margin:36px 0 28px;z-index:1;width:min(92%,400px);display:grid;justify-items:center;gap:10px;text-align:center;padding:22px 20px;border-radius:16px;background:var(--bg);border:2px solid var(--ink);box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.lockcard{position:sticky;top:calc(var(--toph,60px) + 84px);align-self:start;justify-self:center;margin:40px 0 32px;z-index:1;width:min(92%,400px);display:grid;justify-items:center;gap:12px;text-align:center;padding:24px 24px;border-radius:16px;background:var(--bg);border:2px solid var(--ink);box-shadow:0 14px 36px rgba(0,0,0,.18)}
 .lki{width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center}
 .lki svg{width:20px;height:20px}
-.lockcard>b{font:800 26px/1 "Barlow Condensed",sans-serif}
+.lockcard>b{font:800 24px/1 var(--fd)}
 .lockcard p{font-size:14px;color:var(--mut)}
 .lockcard .btn{justify-self:stretch}
-@media(max-width:720px){.ex{grid-template-columns:52px minmax(0,1fr);grid-template-areas:"c h" "v v" "t t" "s s";column-gap:12px}.corpo{width:52px;height:58px}.ev{justify-self:stretch;justify-content:space-between;gap:6px 14px;padding:8px 12px}.ev dd{font-size:19px}.ses{padding:14px}}
-.pay{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;border:2px solid var(--ink);border-radius:16px;padding:22px;background:var(--bg)}
-.pay h3{font-size:28px}
-.pay ul{margin:10px 0 0;padding-left:20px;display:grid;gap:4px}
+@media(max-width:720px){.ex{grid-template-columns:52px minmax(0,1fr);grid-template-areas:"c h" "v v" "t t" "s s";column-gap:12px}.corpo{width:52px;height:58px}.ev{justify-self:stretch;justify-content:space-between;gap:8px 12px;padding:8px 12px}.ev dd{font-size:18px}.ses{padding:12px}}
+.pay{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 32px;border:2px solid var(--ink);border-radius:16px;padding:24px;background:var(--bg)}
+.pay h3{font-size:24px}
+.pay ul{margin:12px 0 0;padding-left:24px;display:grid;gap:4px}
 .price{display:grid;gap:8px;justify-items:start;align-content:center}
-.price>b{font:800 52px/1 "Barlow Condensed",sans-serif}
-.price small{font-size:13px;color:var(--mut)}
+.price>b{font:800 48px/1 var(--fd)}
+.price small{font-size:14px;color:var(--mut)}
 @media(max-width:720px){.pay{grid-template-columns:minmax(0,1fr)}}
-.dl{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:16px;padding:16px 18px;background:var(--bg)}
+.dl{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;border:2px solid var(--ink);border-radius:16px;padding:16px 16px;background:var(--bg)}
 .dl h3{font-size:24px;margin-right:auto}
 .dl-only{display:none}
 .has-dl .dl-only{display:inline-flex}
 .status{flex-basis:100%;font-size:14px;color:var(--mut)}
 .status:empty{display:none}
-.linkb{font:600 14px Barlow,sans-serif;background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;min-height:44px;padding:0 6px}
+.linkb{font:600 14px var(--ft);background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;min-height:44px;padding:0 8px}
 @media(max-width:720px){.dl h3{flex-basis:100%}.dl .btn{flex:1 1 calc(50% - 10px)}}
-.prog{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 32px;background:var(--bg);border-radius:14px;padding:20px}
-.prog h3{font-size:26px;margin-bottom:8px}
-.prog p,.prog li{font-size:15px}
-.prog ul{margin:0;padding-left:20px;display:grid;gap:6px}
-.ramp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end;height:130px;margin-top:10px}
-.ramp div{background:var(--ink);color:var(--bg);border-radius:6px 6px 0 0;font:700 17px "Barlow Condensed",sans-serif;display:flex;justify-content:center;padding-top:6px}
-.rampl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-size:13px;color:var(--mut);text-align:center;margin-top:4px}
+.prog{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 32px;background:var(--bg);border-radius:12px;padding:24px}
+.prog h3{font-size:24px;margin-bottom:8px}
+.prog p,.prog li{font-size:14px}
+.prog ul{margin:0;padding-left:24px;display:grid;gap:8px}
+.ramp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end;height:130px;margin-top:12px}
+.ramp div{background:var(--ink);color:var(--bg);border-radius:6px 6px 0 0;font:700 16px var(--fd);display:flex;justify-content:center;padding-top:8px}
+.rampl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-size:14px;color:var(--mut);text-align:center;margin-top:4px}
 .ex-prog{font-variant-numeric:tabular-nums;font-weight:600}
 .prog .ler{grid-column:1/-1}
 .ler ul{display:block;columns:2;column-gap:32px}
-.ler li{break-inside:avoid;margin-bottom:6px}
+.ler li{break-inside:avoid;margin-bottom:8px}
 @media(max-width:720px){.ler ul{columns:1}}
 @media(max-width:720px){.prog{grid-template-columns:minmax(0,1fr)}}
 .foot{border-top:1.5px solid var(--ink);font-size:14px;color:var(--mut)}
 .foot p{max-width:80ch}
-.foot details{margin-top:10px}
+.foot details{margin-top:12px}
 .foot summary{cursor:pointer;font-weight:700;color:var(--ink);min-height:44px;display:flex;align-items:center}
-.foot ul{columns:2;column-gap:32px;margin:0;padding-left:18px}
+.foot ul{columns:2;column-gap:32px;margin:0;padding-left:16px}
 .foot li{break-inside:avoid;margin-bottom:4px}
 @media(max-width:600px){.foot ul{columns:1}}
 .modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px}
 .modal[hidden]{display:none}
-.sheet{background:var(--bg);color:var(--ink);border-radius:16px;max-width:400px;width:100%;padding:22px;display:grid;gap:14px;max-height:calc(100% - 16px);overflow:auto}
+.sheet{background:var(--bg);color:var(--ink);border-radius:16px;max-width:400px;width:100%;padding:24px;display:grid;gap:12px;max-height:calc(100% - 16px);overflow:auto}
 .sheet h3{font-size:30px}
-.qr{position:relative;width:196px;justify-self:center;padding:10px;background:#fff;border-radius:10px;border:1.5px solid var(--line)}
+.qr{position:relative;width:196px;justify-self:center;padding:12px;background:#fff;border-radius:8px;border:1.5px solid var(--line)}
 .qr svg{display:block;width:176px;height:176px}
-.qr span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:#141414;padding:4px 10px;border-radius:6px;font-weight:700;font-size:13px;border:1.5px solid #141414;white-space:nowrap}
-.sheet .row{display:flex;flex-wrap:wrap;gap:10px}
+.qr span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:#141414;padding:4px 12px;border-radius:6px;font-weight:700;font-size:14px;border:1.5px solid #141414;white-space:nowrap}
+.sheet .row{display:flex;flex-wrap:wrap;gap:12px}
 .sheet.wide{max-width:560px}
-.sheet h4{font:700 16px Barlow,sans-serif;margin:6px 0 0}
-.opts{display:grid;gap:6px}
-.opt{display:grid;gap:2px;text-align:left;min-height:48px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font:500 16px Barlow,sans-serif}
-.opt small{font-size:13px;color:var(--mut)}
+.sheet h4{font:700 16px var(--ft);margin:8px 0 0}
+.opts{display:grid;gap:8px}
+.opt{display:grid;gap:2px;text-align:left;min-height:48px;padding:12px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font:500 16px var(--ft)}
+.opt small{font-size:14px;color:var(--mut)}
 .opt:hover{border-color:var(--ink)}
 .opt[aria-pressed=true]{border-color:var(--ink);background:var(--pan);box-shadow:inset 4px 0 0 var(--ink)}
 .opt[disabled]{opacity:.55;cursor:default;border-style:dashed}
 .cit{text-decoration:none;background:color-mix(in srgb,var(--yel) 40%,transparent);color:var(--ink);padding:.04em .4em;border-radius:.5em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
 a.cit:hover{background:color-mix(in srgb,var(--yel) 65%,transparent);text-decoration:underline}
 a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
-.fx{font-size:14px;line-height:1.5;padding:9px 12px;border-radius:10px;background:var(--pan);border-left:3px solid var(--blue)}
+.fx{font-size:14px;line-height:1.5;padding:8px 12px;border-radius:8px;background:var(--pan);border-left:3px solid var(--blue)}
 .fx:empty{display:none}
-.alerta{margin-top:8px;padding:10px 14px;border-radius:10px;background:var(--pan);border-left:4px solid var(--red);font-size:15px}
+.alerta{margin-top:8px;padding:12px 12px;border-radius:8px;background:var(--pan);border-left:4px solid var(--red);font-size:14px}
+
+
+/* telas */
+a.linkb{display:inline-flex;align-items:center}
+[hidden]{display:none!important}
+.tool{border-top:0}
+.hero .herot{max-width:760px}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1}
+.hero .lead{font-size:18px;max-width:680px;margin-top:16px}
+.acts{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin:24px 0 12px}
+.exemplo{margin:64px 0 0;padding-top:40px;border-top:1.5px solid var(--line)}
+.exh{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+.exh h2{font-size:30px}
+.exl{font-size:14px;color:var(--mut);margin:12px 0 12px;max-width:80ch}
+.exemplo .acts{margin-top:24px}
+.btn.sec{background:transparent;color:var(--ink)}
+.btn.sec:hover{background:var(--pan)}
+.fim{background:var(--pan)}
+.fim .cta{border:0;background:transparent;padding:0}
+.steps{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.steps a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 8px;border-radius:999px;border:1.5px solid var(--line);text-decoration:none;font-weight:600;color:var(--mut)}
+.steps a b{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;background:var(--pan);color:var(--ink);font:700 16px/1 var(--fd)}
+.steps a.feito{color:var(--ink);border-color:var(--ink)}
+.steps a[aria-current=step]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.steps a[aria-current=step] b{background:var(--bg);color:var(--ink)}
+.steps a:hover{border-color:var(--ink)}
+.wiz{position:sticky;bottom:0;z-index:5;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);border-radius:12px 12px 0 0;font-size:14px}
+.wiz>span{display:grid;gap:2px}
+.wiz>span b{font-size:16px}
+.wiz .acoes{display:flex;gap:8px;flex:none}
+.wiz .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+.wiz .btn.ghost{background:transparent;color:var(--bg);border-color:color-mix(in srgb,var(--bg) 45%,transparent)}
+.vazio-f{display:grid;justify-items:start;gap:16px;padding:24px 0}
+.resumo{font-size:14px;color:var(--mut);margin-top:8px}
+.resumo a{font-weight:600;color:var(--ink)}
+.nav a[aria-current=page]{background:var(--ink);color:var(--bg)}
+@media(max-width:900px){#montar[data-passo="1"] .panel,#montar[data-passo="2"] .panel{display:none}.wiz{margin-left:calc(-1*max(5vw,16px));margin-right:calc(-1*max(5vw,16px));border-radius:0}}
+.wiz .btn{white-space:nowrap}
+@media(max-width:520px){.dd-t{display:none}#hd .chip,#fd .chip{min-width:52px;padding:0 12px}#hd,#fd{flex-wrap:nowrap}}
+@media(max-width:520px){.nav a[data-v=inicio]{display:none}.steps{flex-wrap:nowrap}.steps a{padding-right:12px;font-size:14px}.steps a:not([aria-current]){padding-right:8px}.steps a:not([aria-current]) span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.wiz{padding-left:16px;padding-right:16px}.wiz>span b{font-size:14px}}
+/* estados */
+.btn,.chip,.sc,.swap,.seg button,.dnav a,.day.lnk{transition:transform .2s cubic-bezier(.22,1,.36,1),background-color .2s cubic-bezier(.22,1,.36,1),box-shadow .2s cubic-bezier(.22,1,.36,1)}
+.btn:active,.chip:active,.sc:active,.swap:active,.seg button:active,.dnav a:active{transform:scale(.98)}
+.btn[disabled],.btn[aria-busy=true]{opacity:.6;cursor:progress}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.btn:active,.chip:active,.sc:active,.swap:active,.seg button:active,.dnav a:active{transform:none}}
+.skip{position:absolute;left:16px;top:-64px;z-index:20;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+p,li{text-wrap:pretty}
+/* como funciona, FAQ, chamada final */
+.passos{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:p}
+.passos li{counter-increment:p;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
+.passos li::before{content:counter(p);grid-row:span 2;width:40px;height:40px;border-radius:999px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 20px/1 var(--fd)}
+.passos b{font:700 20px/1.2 var(--fd);padding-top:8px}
+.passos span{color:var(--mut)}
+.faq{margin-top:16px;display:grid;max-width:820px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:56px;padding:12px 0;font-weight:600;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font:600 24px/1 var(--ft);color:var(--mut);transition:transform .2s cubic-bezier(.22,1,.36,1)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details>div{padding:0 0 16px;color:var(--mut);max-width:68ch;display:grid;gap:8px}
+.cta{display:grid;justify-items:start;gap:16px}
+.cta p{color:var(--mut);max-width:56ch}
+.legal{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:16px}
+.legal details{flex:1 1 280px}
+.legal summary{cursor:pointer;font-weight:600}
+.legal details>div{margin-top:8px;display:grid;gap:8px;font-size:14px;color:var(--mut)}
+@media(max-width:860px){.passos{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
+<a class="skip" href="#conteudo">Pular pro conteúdo</a>
 <header class="top">
-  <a class="mark" href="#divisoes"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12" fill="var(--red)"/><circle cx="13" cy="13" r="8.5" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5"/><circle cx="13" cy="13" r="3.2" fill="var(--bg)"/></svg>Ficha <small>nome provisório</small></a>
-  <nav class="nav" aria-label="Seções"><a href="#divisoes">Divisões</a><a href="#montar">Montar</a><a href="#ficha">Sua ficha</a></nav>
+  <a class="mark" href="#/"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12" fill="var(--red)"/><circle cx="13" cy="13" r="8.5" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5"/><circle cx="13" cy="13" r="3.2" fill="var(--bg)"/></svg>Ficha <small>nome provisório</small></a>
+  <nav class="nav" aria-label="Telas"><a href="#/" data-v="inicio">Início</a><a href="#/divisoes" data-v="divisoes">Divisões</a><a href="#/montar/1" data-v="montar">Montar</a><a href="#/ficha" data-v="ficha">Sua ficha</a></nav>
 </header>
-<main>
-  <section id="divisoes" class="band free">
+<main id="conteudo">
+  <section id="inicio" class="band hero" data-view="inicio" aria-labelledby="h-ini">
+    <div class="wrap">
+      <div class="herot">
+        <h1 id="h-ini">Sua ficha de treino, montada com estudo</h1>
+        <p class="lead">Você diz os dias, as máquinas da sua academia e o foco de cada músculo. A divisão, o volume e os exercícios saem do que os estudos mostram, e cada escolha vem com a referência.</p>
+        <div class="acts"><a class="btn" href="#/montar/1">Montar minha ficha</a><a class="btn sec" href="#/divisoes">Ver as divisões</a></div>
+        <p class="help">O 1º dia sai de graça e sem cadastro. A ficha completa custa R$ 9,90.</p>
+      </div>
+      <div class="exemplo">
+        <div class="exh"><h2>Quantos dias você treina?</h2><div class="chips" id="hd" role="group" aria-label="Dias por semana"></div></div>
+        <p class="exl" id="hx"></p>
+        <div id="hw"></div>
+        <div class="acts"><button type="button" class="btn" id="hgo">Montar a minha</button><a class="btn sec" id="hver" href="#/divisoes">Ver as outras divisões</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="divisoes" class="band free" data-view="divisoes">
     <div class="wrap">
       <div class="ttl">
         <h1>Quantos dias por semana você treina?</h1>
@@ -283,7 +392,7 @@ a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
       <div class="ctl">
         <div class="chips" id="fd" role="group" aria-label="Dias por semana"></div>
       </div>
-      <div class="chips spl" id="fs" role="group" aria-label="Divisão"></div>
+      <div class="spk spl" id="fs" role="group" aria-label="Divisão"></div>
       <div id="fw"></div>
       <p class="note" id="fn"></p>
       <div class="facts">
@@ -299,37 +408,48 @@ a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
         </div>
         <aside class="cta">
           <p>Esse é o exemplo com academia completa e volume Normal pra todo mundo. A sua ficha sai com os aparelhos da sua academia, o seu foco e o tempo que você tem.</p>
-          <a class="btn" href="#montar">Montar a minha</a>
+          <button type="button" class="btn" id="fgo">Montar a minha</button>
         </aside>
       </div>
     </div>
   </section>
 
-  <section id="montar" class="band tool">
+  <section id="como" class="band" data-view="inicio" aria-labelledby="h-como">
     <div class="wrap">
-      <h2>Monte a sua ficha</h2>
-      <p class="lead">Exemplo preenchido: 4 dias, academia de bairro, foco em glúteos e ombros. Mude à vontade, a ficha atualiza na hora.</p>
+      <h2 id="h-como">Como funciona</h2>
+      <ol class="passos">
+        <li><b>Sua semana</b><span>Os dias que você treina, quanto tempo tem e sua experiência.</span></li>
+        <li><b>Sua academia</b><span>Marque as máquinas que ela tem. O gerador só usa o que existe lá.</span></li>
+        <li><b>Seu foco</b><span>Cada músculo em Foco, Normal ou Manter. O 1º dia da ficha sai na hora, de graça.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="montar" class="band tool" data-view="montar" data-passo="1">
+    <div class="wrap">
+      <h1>Monte a sua ficha</h1>
+      <ol class="steps" id="steps"></ol>
+      <p class="lead" id="m-lead"></p>
       <div class="grid">
         <form id="form" novalidate>
-          <div class="fld" role="group" aria-labelledby="l-dias"><h3 id="l-dias">Dias que você treina</h3><div class="chips" id="f-dias"></div><p class="help" id="h-dias">De 2 a 6 dias.</p><p class="fx" id="x-dias"></p></div>
-          <div class="fld" role="group" aria-labelledby="l-dur"><h3 id="l-dur">Tempo por treino</h3><div class="chips" id="f-dur"></div><p class="fx" id="x-dur"></p></div>
-          <div class="fld" role="group" aria-labelledby="l-niv"><h3 id="l-niv">Experiência</h3><div class="chips" id="f-niv"></div><p class="fx" id="x-niv"></p></div>
-          <div class="fld" role="group" aria-labelledby="l-atual"><h3 id="l-atual">Como você treina hoje</h3><div class="chips" id="f-atual"></div><p class="fx" id="x-atual"></p></div>
-          <div class="fld" role="group" aria-labelledby="l-split"><h3 id="l-split">Divisão</h3><div class="chips" id="f-split"></div><p class="fx" id="x-split"></p></div>
-          <div class="fld" role="group" aria-labelledby="l-acad"><h3 id="l-acad">Academia</h3><div class="chips" id="f-acad"></div>
-            <p class="help">Cada tipo já vem com as máquinas típicas marcadas. Confira grupo por grupo e marque o que a sua academia tem: o gerador só usa isso.</p><details class="eq"><summary><span class="eqt"><b>Máquinas da sua academia</b><span id="f-eqn"></span></span><span class="eqc" aria-hidden="true"></span></summary><div class="eqb"><div class="eqhal"><h4 class="eqh">Halteres (peso máximo)</h4><div class="chips" id="f-hal"></div></div><div class="eqg" id="f-eq"></div></div></details>
+          <div class="fld" data-step="1" role="group" aria-labelledby="l-dias"><h3 id="l-dias">Dias que você treina</h3><div class="chips" id="f-dias"></div><p class="help" id="h-dias">De 2 a 6 dias.</p><p class="fx" id="x-dias"></p></div>
+          <div class="fld" data-step="1" role="group" aria-labelledby="l-dur"><h3 id="l-dur">Tempo por treino</h3><div class="chips" id="f-dur"></div><p class="fx" id="x-dur"></p></div>
+          <div class="fld" data-step="1" role="group" aria-labelledby="l-niv"><h3 id="l-niv">Experiência</h3><div class="chips" id="f-niv"></div><p class="fx" id="x-niv"></p></div>
+          <div class="fld" data-step="1" role="group" aria-labelledby="l-atual"><h3 id="l-atual">Como você treina hoje</h3><div class="chips" id="f-atual"></div><p class="fx" id="x-atual"></p></div>
+          <div class="fld" data-step="2" role="group" aria-labelledby="l-acad"><h3 id="l-acad">Academia</h3><div class="chips" id="f-acad"></div>
+            <p class="help">Cada tipo já vem com as máquinas típicas marcadas. Confira grupo por grupo e marque o que a sua academia tem: o gerador só usa isso.</p><details class="eq" open><summary><span class="eqt"><b>Máquinas da sua academia</b><span id="f-eqn"></span></span><span class="eqc" aria-hidden="true"></span></summary><div class="eqb"><div class="eqhal"><h4 class="eqh">Halteres (peso máximo)</h4><div class="chips" id="f-hal"></div></div><div class="eqg" id="f-eq"></div></div></details>
           </div>
-          <div class="fld" role="group" aria-labelledby="l-foco"><h3 id="l-foco">Foco por músculo</h3><p class="help">Foco ganha mais séries por semana, Manter fica com menos. O número à direita é o seu alvo de séries por semana. Com 2–3 focos cabe melhor.</p><div id="f-focos"></div><div id="f-tiers"></div></div>
+          <div class="fld" data-step="3" role="group" aria-labelledby="l-foco"><h3 id="l-foco">Foco por músculo</h3><p class="help">Foco ganha mais séries por semana, Manter fica com menos. O número à direita é o seu alvo de séries por semana. Com 2–3 focos cabe melhor.</p><div id="f-focos"></div><div id="f-tiers"></div></div>
+          <div class="fld" data-step="3" role="group" aria-labelledby="l-split"><h3 id="l-split">Divisão</h3><div id="f-split"></div><p class="fx" id="x-split"></p></div>
         </form>
         <aside class="panel" id="panel" aria-live="polite">
           <h3 id="p-h"></h3>
           <p class="help" id="p-s"></p>
           <div class="legend"><span><i class="sw t2"></i>Foco</span><span><i class="sw t1"></i>Normal</span><span><i class="sw t0"></i>Manter</span><span>1 anilha = 1 série por semana</span></div>
           <div class="vol" id="vol"></div>
-          <a class="btn" href="#ficha">Ver a ficha</a>
         </aside>
       </div>
-      <details class="how">
+      <details class="how" data-step="3">
         <summary>Como o gerador decide</summary>
         <ul>
           <li>Além das regras lá de cima: Normal é o ponto de partida da base (~10 séries nos músculos grandes e 6 nos braços, que ganham trabalho indireto dos compostos). Foco sobe pra ~14–18 e Manter cai pra ~3–6. Teto de 20 (Pelland 2026).</li>
@@ -342,12 +462,36 @@ a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
           <li>Automática: testa as divisões possíveis pros seus dias e fica com a que encaixa mais volume sem furar essas regras. No empate, fica com a que você já faz.</li>
         </ul>
       </details>
-      <div class="bar" id="bar"></div>
+      <div class="wiz" id="bar"></div>
     </div>
   </section>
 
-  <section id="ficha" class="band ficha">
+  <section id="ficha" class="band ficha" data-view="ficha">
     <div class="wrap" id="ficha-in"></div>
+  </section>
+  <section id="duvidas" class="band" data-view="inicio" aria-labelledby="h-duv">
+    <div class="wrap">
+      <h2 id="h-duv">Dúvidas</h2>
+      <div class="faq">
+        <details><summary>O que são os números em cada dia da semana?</summary><div><p>São as séries daquele músculo naquele treino. O cartão Total da semana soma os dias, e é esse total que conta pro crescimento (Schoenfeld 2017).</p></div></details>
+        <details><summary>Serve pra quem está começando?</summary><div><p>Serve. Marque Iniciante: a ficha usa 70% do volume, 2 séries por exercício e para mais longe da falha, sem as faixas de 4 a 6 reps. Técnica primeiro, carga depois.</p></div></details>
+        <details><summary>Minha academia não tem uma das máquinas.</summary><div><p>Desmarque em Máquinas da sua academia. O gerador só usa o que está marcado e troca pelo próximo exercício do mesmo músculo. Se um músculo ficar sem opção, a ficha avisa.</p></div></details>
+        <details><summary>Posso trocar um exercício?</summary><div><p>Pode. Cada exercício tem o botão Trocar exercício, com as opções do mesmo músculo que existem na sua academia.</p></div></details>
+        <details><summary>Por que quase todo exercício tem 2 séries?</summary><div><p>Pra espalhar o volume do músculo em mais exercícios e ângulos. O que manda é o total de séries duras por músculo na semana, não quantas séries cada exercício tem.</p></div></details>
+        <details><summary>Preciso criar conta?</summary><div><p>Não. Suas escolhas ficam salvas só neste navegador. Pra guardar a ficha, baixe o PDF ou a planilha.</p></div></details>
+        <details><summary>Quanto custa e o que vem na ficha completa?</summary><div><p>O 1º dia é de graça. A ficha completa custa R$ 9,90 no Pix e libera todos os dias, a troca de exercícios, o PDF e a planilha.</p></div></details>
+        <details><summary>Por quanto tempo sigo a ficha?</summary><div><p>De 6 a 8 semanas, subindo carga ou reps, que funcionam igual (Plotkin 2022). Depois reavalie: se estagnou e recupera bem, some séries; se está cansado demais, tire.</p></div></details>
+        <details><summary>De onde vêm as escolhas da ficha?</summary><div><p>De estudos de hipertrofia sobre frequência, volume, reps, descanso e escolha de exercício. Cada estudo citado na página abre o artigo original.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band fim" data-view="inicio" aria-labelledby="h-cta">
+    <div class="wrap cta">
+      <h2 id="h-cta">Monte a sua ficha</h2>
+      <p>Leva uns 2 minutos: dias, academia e foco. O 1º treino sai na hora.</p>
+      <a class="btn" href="#/montar/1">Montar minha ficha</a>
+    </div>
   </section>
 </main>
 <footer class="band foot">
@@ -379,6 +523,16 @@ a.cit::after{content:"↗";font-size:.8em;margin-left:.2em;opacity:.7}
         <li>Wolf 2025 e Gschneidner 2025 (preprint): parciais alongadas</li>
       </ul>
     </details>
+    <nav class="legal" aria-label="Termos e privacidade">
+      <details id="termos"><summary>Termos de uso</summary><div>
+        <p>A ficha é material educativo, montada a partir de estudos de hipertrofia, e não substitui a avaliação de um profissional de educação física ou de um médico. Se você tem lesão, dor ou alguma condição de saúde, fale com um profissional antes de começar.</p>
+        <p>Pagamento e reembolso: {{condições de pagamento e reembolso}}.</p>
+      </div></details>
+      <details id="privacidade"><summary>Privacidade</summary><div>
+        <p>Não tem conta nem cadastro. Os dias, as máquinas e o foco que você escolhe ficam salvos só neste navegador e não vão pra nenhum servidor. Pra apagar, limpe os dados deste site no navegador.</p>
+        <p>As fontes da página são carregadas do Google Fonts.</p>
+      </div></details>
+    </nav>
   </div>
 </footer>
 <div class="modal" id="troca" hidden>
@@ -456,14 +610,14 @@ const FICHA = (() => {
       v: [['Supino inclinado 30° com halteres', ['halter', 'banco']], ['Supino inclinado articulado (vertical)', ['sup_incl_art_v']], ['Supino inclinado articulado (horizontal)', ['sup_incl_art_h']], ['Supino inclinado na roldana', ['sup_incl_rold']], ['Supino inclinado no Smith', ['smith_reto', 'banco']], ['Supino inclinado com barra', ['barra', 'banco']]] },
     crucifixo: { m: 'peito', tipo: 'k', reps: '5–9', rot: 1, al: 1, cue: 'Abre até sentir o peito alongar, sem perder o controle.', why: 'Carrega o peito na posição alongada (regra do alongado; sem estudo direto).',
       v: [['Peck deck', ['peck_deck']], ['Voador', ['voador']], ['Crucifixo máquina', ['crucifixo_maq']], ['Crossover polia baixa', ['polia']], ['Crossover polia alta', ['polia']], ['Crucifixo com halteres', ['halter', 'banco']]] },
-    puxada: { m: 'costas', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, al: 1, cue: 'Pegada um pouco mais larga que os ombros, peito alto; solta o ombro em cima.', why: 'A largura da pegada quase não muda o dorsal (Andersen 2014).',
+    puxada: { m: 'costas', sub: 'dorsal', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, al: 1, cue: 'Pegada um pouco mais larga que os ombros, peito alto; solta o ombro em cima.', why: 'A largura da pegada quase não muda o dorsal (Andersen 2014).',
       v: [['Puxada no pulley, pegada média', ['pulley']], ['Puxada frontal articulada', ['puxada_frontal_art']], ['Puxada frontal na máquina', ['puxada_frontal_maq']], ['Puxada na polia alta', ['polia']], ['Barra fixa', ['barrafixa'], 'Se não sair 5 reps, volta pra puxada.'], ['Pullover com halter', ['halter', 'banco'], '', '8–12']] },
-    puxada_neutra: { m: 'costas', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, al: 1, cue: 'Cotovelos junto ao corpo, puxa até o peito.', why: 'Pegada neutra e fechada permite mais carga, com o dorsal igual (Andersen 2014).',
+    puxada_neutra: { m: 'costas', sub: 'dorsal', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, al: 1, cue: 'Cotovelos junto ao corpo, puxa até o peito.', why: 'Pegada neutra e fechada permite mais carga, com o dorsal igual (Andersen 2014).',
       v: [['Puxada com triângulo no pulley', ['pulley']], ['Puxada alta articulada', ['puxada_alta_art']], ['Puxada unilateral neutra no cabo', ['polia']], ['Pullover na máquina', ['pullover_maq'], '', '8–12'], ['Pulldown de braço reto na polia', ['polia'], '', '8–12']] },
-    remada: { m: 'costas', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, cue: 'Segura 1 s com as escápulas fechadas, sem balançar.', why: '1 puxada vertical + 1 remada cobre as costas.',
+    remada: { m: 'costas', sub: 'dorsal', s: ['biceps'], tipo: 'c', reps: '5–9', rot: 1, cue: 'Segura 1 s com as escápulas fechadas, sem balançar.', why: '1 puxada vertical + 1 remada cobre as costas.',
       v: [['Remada baixa no triângulo', ['remada_baixa']], ['Low row', ['low_row']], ['Remada articulada com anilha', ['remada_art_anilha']], ['Remada na máquina (roldana)', ['remada_maq_rold']], ['Remada unilateral com halter', ['halter', 'banco']], ['Remada curvada com barra', ['barra']]] },
-    remada_alta: { m: 'costas', s: ['ombros', 'biceps'], tipo: 'c', reps: '5–9', rot: 1, cue: 'Cotovelos abertos, puxa até a linha do tronco.', why: 'Plano transversal: meio das costas e deltoide posterior.',
-      v: [['Remada cavalinho', ['remada_cavalinho']], ['Remada T-bar', ['remada_tbar']], ['Seal row', ['seal_row']], ['Remada curvada na máquina', ['remada_curvada_maq']], ['Remada alta articulada', ['puxada_alta_art']], ['Remada aberta no cabo', ['remada_baixa']], ['Remada com halteres, peito apoiado', ['halter', 'banco']], ['Remada curvada aberta', ['barra']]] },
+    remada_alta: { m: 'costas', sub: 'upper back', s: ['ombros', 'biceps'], tipo: 'c', reps: '5–9', rot: 1, cue: 'Cotovelos abertos, puxa até a linha do tronco.', why: 'Plano transversal: meio das costas e deltoide posterior.',
+      v: [['Remada T-bar', ['remada_tbar']], ['Remada cavalinho', ['remada_cavalinho']], ['Seal row', ['seal_row']], ['Remada curvada na máquina', ['remada_curvada_maq']], ['Remada alta articulada', ['puxada_alta_art']], ['Remada aberta no cabo', ['remada_baixa']], ['Remada com halteres, peito apoiado', ['halter', 'banco']], ['Remada curvada aberta', ['barra']]] },
     desenv: { m: 'ombros', s: ['triceps'], tipo: 'c', reps: '5–9', rot: 1, cue: 'Antebraços na vertical, sem travar o cotovelo.', why: 'Composto de ombro; também dá volume indireto de tríceps.',
       v: [['Desenvolvimento na máquina (anilhas)', ['desenv_maq_anilha']], ['Desenvolvimento na máquina (roldana)', ['desenv_maq_rold']], ['Desenvolvimento com halteres', ['halter', 'banco']], ['Desenvolvimento no Smith', ['smith_reto', 'banco']]] },
     lateral: { m: 'ombros', tipo: 'i', reps: '8–12', rot: 1, cue: 'Sobe até a linha do ombro, cotovelo levemente à frente, sem balanço. No cabo, polia na altura do quadril.', why: 'Halter e cabo deram o mesmo resultado (Larsen 2025).',
@@ -471,13 +625,13 @@ const FICHA = (() => {
     crucifixo_inv: { m: 'ombros', s: ['costas'], tipo: 'i', reps: '8–12', rot: 1, cue: 'Braços quase estendidos, abre pela linha do ombro.', why: 'Deltoide posterior; completa as remadas.',
       v: [['Crucifixo inverso no peck deck', ['peck_deck']], ['Crucifixo inverso no voador', ['voador']], ['Crucifixo inverso na polia', ['polia']], ['Crucifixo inverso com halteres', ['halter', 'banco']]] },
     rosca_incl: { m: 'biceps', tipo: 'i', reps: '5–9', rot: 1, al: 1, cue: 'Banco a 45°, braço atrás do tronco; desce em 2–3 s sem embalo.', why: 'Alongada: cresceu mais a parte proximal do bíceps (Kassiano 2025).',
-      v: [['Rosca inclinada com halteres', ['halter', 'banco']], ['Rosca bayesian na polia', ['polia'], '', '8–12']] },
+      v: [['Rosca inclinada 45° com halteres', ['halter', 'banco']], ['Rosca bayesian na polia', ['polia'], '', '8–12']] },
     rosca_scott: { m: 'biceps', tipo: 'i', reps: '5–9', rot: 1, cue: 'Desce em 2–3 s até quase estender, sem embalo.', why: 'Scott cresceu mais a parte distal do bíceps (Kassiano 2025).',
-      v: [['Rosca Scott na máquina (roldana)', ['scott_rold']], ['Rosca Scott na máquina (anilha)', ['scott_anilha']], ['Rosca Scott no banco', ['banco_scott']], ['Biceps machine curl', ['biceps_machine']], ['Rosca direta apoiada na máquina', ['rosca_direta_maq']], ['Rosca spider com halteres', ['halter', 'banco']], ['Rosca na polia', ['polia'], '', '8–12']] },
+      v: [['Rosca Scott na máquina (roldana)', ['scott_rold']], ['Rosca Scott unilateral com halter', ['banco_scott', 'halter']], ['Rosca Scott unilateral na máquina', ['scott_rold']], ['Biceps machine curl', ['biceps_machine']], ['Rosca Scott na máquina (anilha)', ['scott_anilha']], ['Rosca Scott no banco', ['banco_scott']], ['Rosca direta apoiada na máquina', ['rosca_direta_maq']], ['Rosca spider com halteres', ['halter', 'banco']], ['Rosca na polia', ['polia'], '', '8–12']] },
     tri_cabeca: { m: 'triceps', tipo: 'i', reps: '5–9', rot: 1, al: 1, cue: 'Cotovelos apontando pra frente; desce até alongar bem.', why: 'Acima da cabeça cresceu mais que o pushdown (Maeo 2022).',
-      v: [['Tríceps francês unilateral com halter', ['halter']], ['Tríceps de costas para a polia', ['polia']], ['Tríceps francês com halter, 2 mãos', ['halter']]] },
+      v: [['Tríceps francês na polia (corda)', ['polia']], ['Tríceps francês unilateral na polia', ['polia']], ['Tríceps de costas para a polia', ['polia']], ['Tríceps francês unilateral com halter', ['halter']], ['Tríceps francês com halter, 2 mãos', ['halter']]] },
     tri_polia: { m: 'triceps', tipo: 'i', reps: '8–12', rot: 1, cue: 'Cotovelo parado ao lado do tronco.', why: 'Complementa o tríceps acima da cabeça.',
-      v: [['Tríceps na polia (corda)', ['polia']], ['Tríceps testa na máquina', ['triceps_testa_maq']], ['Extensão de cotovelo na máquina', ['extensao_cot_maq']], ['Paralela na máquina', ['paralela_maq'], '', '5–9'], ['Tríceps testa com halteres', ['halter', 'banco']]] },
+      v: [['Tríceps na polia (corda)', ['polia']], ['Tríceps na polia (barra)', ['polia']], ['Tríceps unilateral na polia', ['polia']], ['Tríceps testa na máquina', ['triceps_testa_maq']], ['Extensão de cotovelo na máquina', ['extensao_cot_maq']], ['Paralela na máquina', ['paralela_maq'], '', '5–9'], ['Tríceps testa com halteres', ['halter', 'banco']]] },
     agach: { m: 'quad', s: ['gluteo', 'adutor'], tipo: 'c', reps: '5–9', rot: 1, al: 1, cue: 'Desce até onde a coluna fica neutra e o calcanhar no chão.', why: 'Quadríceps rende o máximo perto de 90–100° de joelho (Bloomquist 2013); mais fundo dá mais glúteo e adutor (Kubo 2019).',
       v: [['Agachamento pêndulo', ['pendulo']], ['Agachamento hack', ['hack_conv']], ['Belt squat', ['belt_squat']], ['Agachamento no Smith angulado', ['smith_ang']], ['Agachamento no Smith', ['smith_reto']], ['Agachamento livre', ['barra', 'rack'], '', '4–6'], ['Leg press 45° articulado', ['leg45_art']], ['Leg press 45°', ['leg45_linear']], ['Agachamento búlgaro com halteres', ['halter', 'banco']], ['Agachamento goblet', ['halter'], '', '8–12']] },
     legpress: { m: 'quad', s: ['gluteo', 'adutor'], tipo: 'c', reps: '5–9', rot: 0, cue: 'Amplitude máxima sem tirar o quadril do banco.', why: 'O leg press também cresce glúteo e adutor (Kinoshita 2026).',
@@ -504,8 +658,8 @@ const FICHA = (() => {
 
   // ordem dos padrões por ocorrência do músculo na semana (âncora no 1º dia, variação no 2º)
   const MENU = {
-    peito: [['sup_reto', 'crucifixo', 'sup_incl'], ['sup_incl', 'crucifixo', 'sup_reto']],
-    costas: [['puxada', 'remada', 'remada_alta'], ['remada', 'puxada_neutra', 'remada_alta']],
+    peito: [['sup_reto', 'crucifixo', 'crucifixo2', 'sup_incl'], ['sup_incl', 'crucifixo', 'crucifixo2', 'sup_reto']],
+    costas: [['puxada', 'remada_alta', 'remada'], ['remada_alta', 'puxada_neutra', 'remada']],
     ombros: [['lateral', 'desenv', 'crucifixo_inv'], ['lateral', 'crucifixo_inv', 'desenv']],
     biceps: [['rosca_incl', 'rosca_scott'], ['rosca_scott', 'rosca_incl']],
     triceps: [['tri_cabeca', 'tri_polia']],
@@ -514,6 +668,8 @@ const FICHA = (() => {
     gluteo: [['hip', 'abdutora', 'coice'], ['abdutora', 'hip', 'coice']],
     adutor: [['adutora']], pant: [['pant']], abd: [['abdominal']]
   };
+  // 2º crucifixo do dia: no lugar do 2º supino, pra não pesar o tríceps; começa pelas variantes de cabo/halter
+  P.crucifixo2 = { ...P.crucifixo, alias: 'crucifixo', v: [3, 4, 1, 0, 2, 5].map(i => P.crucifixo.v[i]) };
   const ALLP = {};
   for (const m of MK) ALLP[m] = [...new Set(MENU[m].flat().concat(Object.keys(P).filter(p => P[p].m === m)))];
 
@@ -522,28 +678,28 @@ const FICHA = (() => {
     FA: { nome: 'Full body A', e: ['quad:agach', 'peito:sup_reto', 'costas:puxada', 'post:flexora', 'ombros:lateral', 'triceps:tri_cabeca', 'pant', 'abd', 'biceps?:rosca_scott', 'gluteo?:hip', 'adutor?'] },
     FB: { nome: 'Full body B', e: ['post:stiff', 'ombros:desenv,lateral', 'costas:remada', 'quad:extensora', 'peito:crucifixo', 'biceps:rosca_incl', 'pant', 'adutor', 'triceps?:tri_polia', 'gluteo?:abdutora', 'abd?'] },
     FC: { nome: 'Full body C', e: ['quad:legpress', 'peito:sup_incl', 'costas:remada_alta', 'post:flexora', 'gluteo:hip', 'triceps:tri_cabeca', 'biceps:rosca_scott', 'ombros?:lateral', 'pant?', 'abd?', 'adutor?'] },
-    U1: { nome: 'Upper 1', e: ['peito:sup_reto,crucifixo', 'costas:puxada,remada', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_incl,rosca_scott'] },
-    U2: { nome: 'Upper 2', e: ['peito:sup_incl,crucifixo', 'costas:remada,puxada_neutra', 'ombros:lateral,crucifixo_inv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_scott,rosca_incl'] },
+    U1: { nome: 'Upper 1', e: ['peito:sup_reto,crucifixo', 'costas:puxada,remada_alta', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_incl,rosca_scott'] },
+    U2: { nome: 'Upper 2', e: ['peito:sup_incl,crucifixo', 'costas:remada_alta,puxada_neutra', 'ombros:lateral,crucifixo_inv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_scott,rosca_incl'] },
     L1: { nome: 'Lower 1', e: ['quad:agach,extensora', 'post:stiff,flexora', 'gluteo:hip,abdutora', 'adutor', 'pant', 'abd'] },
     L2: { nome: 'Lower 2', e: ['quad:legpress,extensora', 'gluteo:hip,abdutora', 'post:flexora,stiff', 'pant', 'adutor', 'abd'] },
     A1: { nome: 'Anterior 1', e: ['peito:sup_reto,crucifixo', 'quad:agach,extensora', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'adutor', 'abd'] },
     A2: { nome: 'Anterior 2', e: ['peito:sup_incl,crucifixo', 'quad:legpress,extensora', 'ombros:desenv,lateral', 'triceps:tri_cabeca,tri_polia', 'abd'] },
-    P1: { nome: 'Posterior 1', e: ['costas:puxada,remada,remada_alta', 'post:flexora,stiff', 'gluteo:hip,abdutora', 'biceps:rosca_scott,rosca_incl', 'pant'] },
+    P1: { nome: 'Posterior 1', e: ['costas:puxada,remada_alta,remada', 'post:flexora,stiff', 'gluteo:hip,abdutora', 'biceps:rosca_scott,rosca_incl', 'pant'] },
     P2: { nome: 'Posterior 2', e: ['post:stiff,flexora', 'costas:puxada_neutra,remada_alta,remada', 'gluteo:abdutora,hip', 'biceps:rosca_incl,rosca_scott', 'pant'] },
-    PU: { nome: 'Push', e: ['peito:sup_reto,sup_incl,crucifixo', 'ombros:desenv,lateral', 'triceps:tri_cabeca,tri_polia', 'abd'] },
-    PL: { nome: 'Pull', e: ['costas:puxada,remada,puxada_neutra', 'ombros?:crucifixo_inv', 'biceps:rosca_incl,rosca_scott'] },
+    PU: { nome: 'Push', e: ['peito:sup_reto,crucifixo,crucifixo2', 'ombros:desenv,lateral', 'triceps:tri_cabeca,tri_polia', 'abd'] },
+    PL: { nome: 'Pull', e: ['costas:puxada,remada_alta,remada', 'ombros?:crucifixo_inv', 'biceps:rosca_incl,rosca_scott'] },
     LG: { nome: 'Legs', e: ['quad:agach,extensora', 'post:stiff,flexora', 'gluteo?:hip,abdutora', 'pant', 'adutor?'] },
-    PU2: { nome: 'Push 2', c2: 1, e: ['peito:sup_incl,crucifixo,sup_reto', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'abd'] },
-    PL2: { nome: 'Pull 2', c2: 1, e: ['costas:remada,puxada_neutra,remada_alta', 'ombros?:crucifixo_inv', 'biceps:rosca_scott,rosca_incl'] },
+    PU2: { nome: 'Push 2', c2: 1, e: ['peito:sup_incl,crucifixo,crucifixo2', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'abd'] },
+    PL2: { nome: 'Pull 2', c2: 1, e: ['costas:remada_alta,puxada_neutra,remada', 'ombros?:crucifixo_inv', 'biceps:rosca_scott,rosca_incl'] },
     LG2: { nome: 'Legs 2', c2: 1, e: ['quad:legpress,extensora', 'gluteo:hip,abdutora', 'post:flexora,stiff', 'pant', 'adutor'] },
-    UP: { nome: 'Upper', e: ['peito:sup_incl,crucifixo', 'costas:remada,puxada_neutra', 'ombros:lateral', 'triceps:tri_cabeca', 'biceps:rosca_scott'] },
+    UP: { nome: 'Upper', e: ['peito:sup_incl,crucifixo', 'costas:remada_alta,puxada_neutra', 'ombros:lateral', 'triceps:tri_cabeca', 'biceps:rosca_scott'] },
     LO: { nome: 'Lower', e: ['quad:legpress,extensora', 'gluteo:hip,abdutora', 'post:flexora,stiff', 'pant', 'adutor', 'abd'] }
   };
   Object.assign(SESS, {
     AN: { nome: 'Anterior', e: ['peito:sup_incl,crucifixo', 'quad:legpress,extensora', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'adutor', 'abd'] },
     PO: { nome: 'Posterior', e: ['costas:remada_alta,puxada_neutra,remada', 'post:flexora,stiff', 'gluteo:hip,abdutora', 'biceps:rosca_scott,rosca_incl', 'pant'] },
-    TO1: { nome: 'Torso 1', e: ['peito:sup_incl,crucifixo,sup_reto', 'costas:remada_alta,puxada_neutra,remada', 'ombros:lateral,crucifixo_inv,desenv', 'abd?'] },
-    TO2: { nome: 'Torso 2', e: ['peito:sup_reto,crucifixo,sup_incl', 'costas:puxada,remada,remada_alta', 'ombros:desenv,lateral,crucifixo_inv', 'abd?'] },
+    TO1: { nome: 'Torso 1', e: ['peito:sup_incl,crucifixo,crucifixo2', 'costas:remada_alta,puxada_neutra,remada', 'ombros:lateral,crucifixo_inv,desenv', 'abd?'] },
+    TO2: { nome: 'Torso 2', e: ['peito:sup_reto,crucifixo,sup_incl', 'costas:puxada,remada_alta,remada', 'ombros:desenv,lateral,crucifixo_inv', 'abd?'] },
     LI1: { nome: 'Limbs 1', e: ['quad:legpress,extensora,agach', 'post:stiff,flexora', 'gluteo:hip,abdutora', 'biceps:rosca_incl,rosca_scott', 'triceps:tri_cabeca,tri_polia', 'pant', 'adutor?', 'ombros?:lateral'] },
     LI2: { nome: 'Limbs 2', e: ['quad:agach,extensora,legpress', 'post:flexora,stiff', 'gluteo:abdutora,hip', 'biceps:rosca_scott,rosca_incl', 'triceps:tri_polia,tri_cabeca', 'pant', 'adutor', 'abd', 'ombros?:lateral'] }
   });
@@ -551,7 +707,7 @@ const FICHA = (() => {
     FD: { nome: 'Full body D', e: ['post:stiff', 'peito:crucifixo,sup_reto', 'costas:puxada_neutra', 'quad:extensora,agach', 'ombros:lateral', 'biceps:rosca_scott', 'triceps:tri_polia,tri_cabeca', 'pant', 'gluteo?:abdutora', 'abd?', 'adutor?'] },
     // full body que fecha a semana nas combinações: tudo pode entrar, o gerador usa só o que falta pra dar 2x
     FX: { nome: 'Full body', flex: 1, e: ['quad:legpress,extensora', 'peito:sup_incl,crucifixo', 'costas:remada_alta,puxada_neutra', 'post:flexora,stiff', 'gluteo:hip,abdutora', 'ombros:lateral,crucifixo_inv', 'biceps:rosca_scott,rosca_incl', 'triceps:tri_polia,tri_cabeca', 'pant', 'abd', 'adutor'] },
-    UPX: { nome: 'Upper', e: ['peito:sup_reto,crucifixo', 'costas:puxada,remada', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_incl,rosca_scott'] },
+    UPX: { nome: 'Upper', e: ['peito:sup_reto,crucifixo', 'costas:puxada,remada_alta', 'ombros:lateral,desenv', 'triceps:tri_cabeca,tri_polia', 'biceps:rosca_incl,rosca_scott'] },
     LOX: { nome: 'Lower', e: ['quad:agach,extensora', 'post:stiff,flexora', 'gluteo:hip,abdutora', 'pant', 'adutor', 'abd'] }
   });
   SESS.U3 = { ...SESS.U1, nome: 'Upper 3', c2: 1 }; SESS.L3 = { ...SESS.L1, nome: 'Lower 3', c2: 1 };
@@ -581,6 +737,8 @@ const FICHA = (() => {
       { id: 'ppllfb', fam: 'ppl', nome: 'PPL + Lower + Full body', s: ['PU', 'PL', 'LG', 'LO', 'FX'], desc: 'Pernas até 3x e superiores 2x: bom pra foco em pernas e glúteos.' },
       { id: 'ulfb', fam: 'ul', nome: 'Upper/Lower + Full body', s: ['U1', 'L1', 'U2', 'L2', 'FX'], desc: 'Upper/Lower 2x com um full body de 5º dia.' },
       { id: 'apfb', fam: 'ap', nome: 'Anterior/Posterior + Full body', s: ['A1', 'P1', 'A2', 'P2', 'FX'], desc: 'Anterior/Posterior 2x com um full body de 5º dia.' },
+      { id: 'u3l2', fam: 'ul', nome: 'Upper 3x + Lower 2x', s: ['U1', 'L1', 'U2', 'L2', 'U3'], desc: 'Superiores 3x e pernas 2x: bom com foco em peito, costas, ombros ou braços.' },
+      { id: 'l3u2', fam: 'ul', nome: 'Lower 3x + Upper 2x', s: ['L1', 'U1', 'L2', 'U2', 'L3'], desc: 'Pernas 3x e superiores 2x: bom com foco em pernas e glúteos.' },
       { id: 'tlfb', fam: 'tl', nome: 'Torso/Limbs + Full body', s: ['TO1', 'LI1', 'TO2', 'LI2', 'FX'], desc: 'Torso/Limbs 2x com um full body de 5º dia, que reforça as pernas.' }
     ],
     6: [
@@ -686,6 +844,7 @@ const FICHA = (() => {
     const carga = idx.map(() => 0);
     const sum = i => Object.values(al[i]).reduce((a, b) => a + b, 0);
     const sem = m => idx.reduce((s, i) => s + (al[i][m] || 0), 0);
+    const naTpl = (i, m) => ent[i].some(e => e.m === m); // o músculo faz parte desse tipo de treino (push no push, pull no pull…)
     const temM = (i, m) => ent[i].some(e => e.m === m) || extra[i].some(e => e.m === m);
     const diasDe = m => idx.filter(i => al[i][m] > 0);
     const okGap = (j, list) => list.every(i => gap(dias[i], dias[j]) >= 2);
@@ -713,7 +872,7 @@ const FICHA = (() => {
         if (mg < 2) S = escolher(prim.concat(sec), Math.min(teto, Math.max(base, fixos >= 3 ? fixos : 2)), prim, dias, carga, flex);
       }
       while (S.length < want && (t === 2 || !S.length)) {
-        const c = idx.filter(j => !S.includes(j) && okGap(j, S)).sort((a, b) => carga[a] - carga[b]);
+        const c = idx.filter(j => !S.includes(j) && naTpl(j, m) && okGap(j, S)).sort((a, b) => carga[a] - carga[b]);
         if (!c.length) break;
         bonus(c[0], m);
         S.push(c[0]);
@@ -735,7 +894,7 @@ const FICHA = (() => {
       let ds = livre(soft(m));
       if (ds.length) { al[ds[0]][m] += st; continue; }
       const cur = diasDe(m);
-      const extraOk = j => temM(j, m) || cfg.tiers[m] === 2 || !cur.length;
+      const extraOk = j => naTpl(j, m) || !cur.length;
       const nj = idx.filter(j => !cur.includes(j) && okGap(j, cur) && cap - sum(j) >= 2 && extraOk(j)).sort((a, b) => temM(b, m) - temM(a, m) || sum(a) - sum(b));
       if (nj.length) {
         if (T[m] - sem(m) >= 2) { bonus(nj[0], m); al[nj[0]][m] = 2; continue; }
@@ -749,6 +908,7 @@ const FICHA = (() => {
     return { ent, extra, al };
   }
 
+  const PEQ = ['biceps', 'triceps', 'pant', 'abd'];
   function partes(a, n, max) { const out = [], b = Math.floor(a / n), r = a % n; for (let i = 0; i < n; i++) out.push(Math.min(max, b + (i < r ? 1 : 0))); return out; }
 
   // transforma as séries em exercícios, com variação entre os dias e checagem de aparelhos
@@ -774,7 +934,9 @@ const FICHA = (() => {
           const ai = pats.findIndex(p => P[p].al);
           if (ai > 0) pats.unshift(pats.splice(ai, 1)[0]);
         }
-        let nx = lv.maxEx <= 2 ? Math.ceil(a / 2) : (a <= 3 ? 1 : a <= 6 ? 2 : 3);
+        // grupos grandes: exercícios de 2 séries, e o 1º leva a sobra (3 só quando o número é ímpar)
+        // braço, panturrilha e abdômen têm poucos exercícios: aí 3 séries por exercício é normal
+        let nx = lv.maxEx <= 2 ? Math.ceil(a / 2) : PEQ.includes(m) ? (a <= 3 ? 1 : a <= 6 ? 2 : 3) : Math.max(1, Math.floor(a / 2));
         nx = Math.min(nx, pats.length);
         const pt = partes(a, nx, lv.maxEx);
         let j = 0, pi = 0;
@@ -788,10 +950,15 @@ const FICHA = (() => {
           }
           const u = use[p] || 0;
           if (vi < 0) {
-            vi = P[p].rot ? u % av.length : 0;
-            let t = 0;
-            while (nomes.has(av[vi].nome) && t < av.length) { vi = (vi + 1) % av.length; t++; }
-            if (nomes.has(av[vi].nome)) continue;
+            // halter só entra no rodízio quando não tem máquina/polia (ou quando é a 1ª opção de propósito, tipo supino inclinado e rosca inclinada)
+            const comH = x => P[p].v[av[x].i][1].includes('halter');
+            const todos = av.map((_, x) => x), semH = todos.filter(x => !comH(x));
+            const pool = P[p].v[0][1].includes('halter') || !semH.length ? todos : semH;
+            const ordem = pool.concat(todos.filter(x => !pool.includes(x)));
+            const ini = P[p].rot ? u % pool.length : 0;
+            vi = -1;
+            for (let t = 0; t < ordem.length; t++) { const x = t < pool.length ? pool[(ini + t) % pool.length] : ordem[t]; if (!nomes.has(av[x].nome)) { vi = x; break; } }
+            if (vi < 0) continue;
           }
           use[p] = u + 1;
           nomes.add(av[vi].nome);
@@ -810,7 +977,32 @@ const FICHA = (() => {
       S.series = S.rows.reduce((s, r) => s + r.sets, 0);
       S.min = Math.round(S.series * 3.2 / 5) * 5;
     });
+    lados(ses, cfg);
     return ses;
+  }
+
+  // braços: alterna unilateral e bilateral. Cada músculo alterna ao longo da semana,
+  // e bíceps começa no contrário do tríceps, então no mesmo dia um fica uni e o outro bi.
+  const uni = nome => /unilateral|bayesian/i.test(nome);
+  function lados(ses, cfg) {
+    const prox = { triceps: true, biceps: false }, semana = new Set();
+    for (const S of ses) {
+      const nomes = new Set(S.rows.map(r => r.nome));
+      for (const r of S.rows) {
+        if (!(r.m in prox)) continue;
+        const quer = prox[r.m];
+        prox[r.m] = !quer;
+        if (r.escolhido || (uni(r.nome) === quer && !semana.has(r.nome))) { semana.add(r.nome); continue; }
+        const av = vAvail(r.p, cfg.eq).filter(v => uni(v.nome) === quer && !nomes.has(v.nome)).sort((a, b) => semana.has(a.nome) - semana.has(b.nome));
+        if (uni(r.nome) === quer && (!av.length || semana.has(av[0].nome))) { semana.add(r.nome); continue; }
+        if (!av.length) { semana.add(r.nome); continue; }
+        const v = av.find(x => !x.eq.includes('halter')) || (av.length && P[r.p].v[0][1].includes('halter') ? av[0] : null) || (vAvail(r.p, cfg.eq).every(x => x.eq.includes('halter')) ? av[0] : null);
+        if (!v) { semana.add(r.nome); continue; }
+        nomes.delete(r.nome); nomes.add(v.nome);
+        r.nome = v.nome; r.vf = v.i; r.obs = v.obs; semana.add(v.nome);
+        if (v.reps) r.reps = v.reps;
+      }
+    }
   }
 
   function analisar(ses, cfg, T, cap) {
@@ -879,7 +1071,7 @@ const FICHA = (() => {
   function opcoes(p0, eq0) {
     const eq = new Set(eq0), m = P[p0].m;
     const lista = p => P[p].v.map((v, i) => ({ p, i, nome: v[0], reps: v[3] || P[p].reps, obs: v[2] || '', al: !!P[p].al, ok: v[1].every(k => eq.has(k)), falta: v[1].filter(k => !eq.has(k)).map(k => EQN[k]) }));
-    return { m, mesmo: lista(p0), outros: ALLP[m].filter(p => p !== p0).flatMap(lista).filter(o => o.ok) };
+    return { m, mesmo: lista(p0), outros: ALLP[m].filter(p => p !== p0 && !P[p].alias && P[p0].alias !== p).flatMap(lista).filter(o => o.ok) };
   }
 
   return { DIAS, EQ, EQN, HALTER, eqDe, PRESETS, MUSC, MK, TIER, P, SESS, SPLITS, DIAS_PADRAO, CAP, NIVEL, TIPO, RAMPA, gerar, vAvail, opcoes };
@@ -913,7 +1105,10 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     livre: { nd: 4, split: 'ul' },
     cfg: { dias: [0, 1, 3, 4], dur: 75, nivel: 'int', atual: 'abc', split: 'auto', preset: 'bairro', eq: F.PRESETS.bairro.eq.slice(), halter: F.PRESETS.bairro.halter, tiers: { peito: 1, costas: 1, ombros: 2, biceps: 0, triceps: 0, quad: 1, post: 1, gluteo: 2, adutor: 0, pant: 1, abd: 0 } },
     pago: false,
-    troca: {}
+    troca: {},
+    view: 'inicio',
+    passo: 1,
+    gerada: false
   };
   const LIBS = {
     pdf: ['https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'],
@@ -962,13 +1157,36 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     return `<div class="weekbox"><ol class="week" style="--cols:${cols}">${dias}${soma}</ol></div>`;
   }
 
+  // escolha de divisão: agrupada pela base, cada opção desenhada como a sequência de treinos
+  const FAMN = { ppl: 'PPL', ul: 'Upper/Lower', ap: 'Anterior/Posterior', tl: 'Torso/Limbs', fb: 'Full body' };
+  const FAMT = { ppl: ['Push', 'Pull', 'Legs'], ul: ['Upper', 'Lower'], ap: ['Ant', 'Post'], tl: ['Torso', 'Limbs'], fb: ['Full'] };
+  const TAB = { Push: 'Push', Pull: 'Pull', Legs: 'Legs', Upper: 'Up', Lower: 'Low', Ant: 'Ant', Post: 'Post', Torso: 'Tor', Limbs: 'Lim', Full: 'Full' };
+  const tipoS = k => /^PU/.test(k) ? 'Push' : /^PL/.test(k) ? 'Pull' : /^LG/.test(k) ? 'Legs' : /^TO/.test(k) ? 'Torso' : /^LI/.test(k) ? 'Limbs' : /^F/.test(k) ? 'Full' : /^U/.test(k) ? 'Upper' : /^L/.test(k) ? 'Lower' : /^A/.test(k) ? 'Ant' : 'Post';
+  function seletor(opts, atual, attr, padrao) {
+    const grupos = [];
+    opts.forEach(o => { let g = grupos.find(x => x.fam === o.fam); if (!g) grupos.push(g = { fam: o.fam, it: [] }); g.it.push(o); });
+    return grupos.map(g => {
+      const base = FAMN[g.fam], extra = g.it.some(o => o.s.some(k => !FAMT[g.fam].includes(tipoS(k))));
+      const cards = g.it.map(o => {
+        let curto = o.nome.startsWith(base) ? o.nome.slice(base.length).trim() : o.nome;
+        if (!curto) curto = o.nome;
+        const tiles = o.s.map(k => { const t = tipoS(k), x = !FAMT[g.fam].includes(t); return `<i class="${x ? 'x' : ''}">${TAB[t]}</i>`; }).join('');
+        return `<button type="button" class="sc" ${attr}="${o.id}" aria-pressed="${o.id === atual}" aria-label="${esc(o.nome)}"><span>${esc(curto)}${padrao && o === opts[0] && opts.length > 1 ? '<small>padrão</small>' : ''}</span><span class="tl" aria-hidden="true">${tiles}</span></button>`;
+      }).join('');
+      return `<div class="spg"><h3>${base}${g.fam === 'ppl' && extra ? ' +' : ''}</h3><div class="spo">${cards}</div></div>`;
+    }).join('');
+  }
+
+  let livreX = null;
   function renderLivre() {
     const nd = st.livre.nd, opts = F.SPLITS[nd];
     if (!opts.find(o => o.id === st.livre.split)) st.livre.split = opts[0].id;
-    $('#fd').innerHTML = [2, 3, 4, 5, 6].map(n => `<button type="button" class="chip" data-nd="${n}" aria-pressed="${n === nd}">${n} dias</button>`).join('');
-    $('#fs').innerHTML = opts.map((o, i) => `<button type="button" class="chip" data-fs="${o.id}" aria-pressed="${o.id === st.livre.split}">${esc(o.nome)}${i === 0 && opts.length > 1 ? '<small>padrão</small>' : ''}</button>`).join('');
+    $('#fd').innerHTML = [2, 3, 4, 5, 6].map(n => `<button type="button" class="chip" data-nd="${n}" aria-pressed="${n === nd}" aria-label="${n} dias">${n}<span class="dd-t"> dias</span></button>`).join('');
+    $('#fs').innerHTML = seletor(opts, st.livre.split, 'data-fs', true);
     const X = F.gerar({ dias: F.DIAS_PADRAO[nd], dur: 75, nivel: 'int', split: st.livre.split, eq: F.eqDe(F.PRESETS.grande.eq, 60), tiers: TIERS_LIVRE });
+    livreX = X;
     $('#fw').innerHTML = semana(X, false);
+    $('#fgo').textContent = `Montar a minha com ${nd} dias`;
     const fr = F.MK.filter(m => TIERS_LIVRE[m] > 0).map(m => X.an.freq[m]);
     const mins = X.sessoes.map(S => S.min);
     const f0 = Math.min(...fr), f1 = Math.max(...fr), a = Math.min(...mins), b = Math.max(...mins);
@@ -988,7 +1206,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     const focos = F.MK.filter(m => c.tiers[m] === 2);
     $('#f-focos').innerHTML = focos.length > 3 ? `<p class="alerta" role="status">Você marcou ${focos.length} focos (${lista(focos.map(m => F.MUSC[m].nome))}). Com 2 ou 3 o volume se distribui melhor: o extra de cada foco tira espaço dos outros.</p>` : '';
     const auto = c.split === 'auto' || !opts.find(o => o.id === c.split);
-    $('#f-split').innerHTML = chip('split', 'auto', 'Automática', auto) + opts.map(o => chip('split', o.id, esc(o.nome), !auto && c.split === o.id)).join('');
+    $('#f-split').innerHTML = `<div class="chips">${chip('split', 'auto', 'Automática', auto)}</div><div class="spk">${seletor(opts, auto ? null : c.split, 'data-k="split" data-v', false)}</div>`;
     $('#f-acad').innerHTML = ACAD.map(([k, n]) => chip('preset', k, n, c.preset === k)).join('') + (c.preset === 'custom' ? chip('preset', 'custom', 'Personalizada', true) : '');
     const g = {};
     F.EQ.forEach(([k, n, gr]) => { (g[gr] = g[gr] || []).push([k, n]); });
@@ -1023,7 +1241,6 @@ if (typeof module !== 'undefined') module.exports = FICHA;
       $('#p-h').textContent = 'Ajuste os dias';
       $('#p-s').textContent = R.erro;
       $('#vol').innerHTML = '';
-      $('#bar').innerHTML = `<span>${esc(R.erro)}</span>`;
       return;
     }
     const mins = R.sessoes.map(S => S.min), a = Math.min(...mins), b = Math.max(...mins);
@@ -1036,7 +1253,6 @@ if (typeof module !== 'undefined') module.exports = FICHA;
       const val = alvo ? got + (got < alvo ? `<small>/${alvo}</small>` : '') : '–';
       return `<div class="vrow"><span class="vn">${F.MUSC[m].nome}</span><span class="sleeve" aria-hidden="true">${pl}</span><span class="vv">${val}</span></div>`;
     }).join('');
-    $('#bar').innerHTML = `<span><b>${esc(R.split.nome)}</b> · ${R.an.total} séries/sem</span><a class="btn sm" href="#ficha">Ver a ficha</a>`;
   }
 
   function porque() {
@@ -1048,7 +1264,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     return s;
   }
 
-  const meta = r => `<span class="mt"><i class="sw t${R.cfg.tiers[r.m]}"></i>${F.MUSC[r.m].nome} · ${F.TIPO[r.tipo]}${r.al ? ' · alongado' : ''}${r.bonus ? ' · encaixe pra fechar o volume' : ''}</span>`;
+  const meta = r => `<span class="mt"><i class="sw t${R.cfg.tiers[r.m]}"></i>${F.MUSC[r.m].nome}${F.P[r.p] && F.P[r.p].sub ? ' (' + F.P[r.p].sub + ')' : ''} · ${F.TIPO[r.tipo]}${r.al ? ' · alongado' : ''}${r.bonus ? ' · encaixe pra fechar o volume' : ''}</span>`;
   const valores = r => `<dl class="ev"><div><dt>Séries × reps</dt><dd>${r.sets}×${r.reps}</dd></div><div><dt>RIR</dt><dd>${r.rir}</dd></div><div><dt>Descanso</dt><dd>${r.desc}</dd></div><div><dt>Preparo</dt><dd>${r.prep}</dd></div></dl>`;
 
   function exAberto(r, ix) {
@@ -1103,11 +1319,14 @@ if (typeof module !== 'undefined') module.exports = FICHA;
 <div class="ler"><h3>Como ler a ficha</h3><ul><li><b>Série válida:</b> a de trabalho, perto da falha. É a que conta no volume e onde você anota a carga.</li><li><b>Aquec.:</b> 1×10–15 bem leve (~50%), só no 1º exercício.</li><li><b>FS (feeder):</b> 3–5 reps longe da falha subindo até a carga de trabalho. 2 FS: 70% e 85–90%. 1 FS: 85%. Não conta no volume.</li><li><b>RIR:</b> reps que sobrariam no fim da série. RIR 1 = dava pra fazer mais uma.</li><li><b>Execução:</b> descida em 2–3 s, sem quicar, na maior amplitude que você controla.</li><li><b>Opcional:</b> 3–5 parciais na parte alongada no fim da última série, no máximo 1 série por exercício (Wolf 2025; Gschneidner 2025, preprint).</li></ul></div></div>`;
 
   function renderFicha() {
-    if (R.erro) { $('#ficha-in').innerHTML = `<h2>Sua ficha</h2><p class="lead">${esc(R.erro)}</p>`; return; }
+    if (!st.gerada) { $('#ficha-in').innerHTML = `<div class="vazio-f"><h1>Sua ficha</h1><p class="lead">Você ainda não montou a sua. São 3 passos: sua semana, sua academia e seu foco.</p><a class="btn" href="#/montar/1">Montar minha ficha</a></div>`; return; }
+    if (R.erro) { $('#ficha-in').innerHTML = `<h1>Sua ficha</h1><p class="lead">${esc(R.erro)}</p><a class="btn" href="#/montar/1">Ajustar os dias</a>`; return; }
     const avs = R.an.av.filter(a => a.tipo !== 'foco');
     const av = avs.length ? `<ul class="av">${avs.map(a => `<li class="${a.tipo}">${esc(a.txt)}</li>`).join('')}</ul>` : '';
     const nav = `<nav class="dnav" aria-label="Ir pro treino do dia">${R.sessoes.map((S, i) => `<a href="#s-${S.dia}" data-ir="${S.dia}">${!st.pago && i > 0 ? LOCK : ''}<span>${F.DIAS[S.dia]}</span>${esc(S.nome)}</a>`).join('')}</nav>`;
-    $('#ficha-in').innerHTML = `<h2>Sua ficha: ${esc(R.split.nome)}</h2><p class="lead">${esc(porque())}</p>${semana(R, true)}${av}${nav}<div class="dias">${R.sessoes.map((S, i) => sessao(S, st.pago || i === 0)).join('')}</div>${st.pago ? baixar() + progressao() : pagar()}`;
+    const c = st.cfg, acad = (ACAD.find(a => a[0] === c.preset) || [0, 'Academia personalizada'])[1];
+    const resumo = `<p class="resumo">${R.sessoes.map(S => F.DIAS[S.dia]).join(', ')}. ${c.dur} min por treino. ${F.NIVEL[c.nivel].nome}. ${esc(acad)}. <a href="#/montar/1">Editar respostas</a></p>`;
+    $('#ficha-in').innerHTML = `<h1>Sua ficha: ${esc(R.split.nome)}</h1>${resumo}<p class="lead">${esc(porque())}</p>${semana(R, true)}${av}${nav}<div class="dias">${R.sessoes.map((S, i) => sessao(S, st.pago || i === 0)).join('')}</div>${st.pago ? baixar() + progressao() : pagar()}`;
     marcaDia();
   }
 
@@ -1116,7 +1335,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     if (el.id) return '#' + el.id;
     const d = el.dataset || {};
     if (d.m) return `[data-m="${d.m}"][data-t="${d.t}"]`;
-    for (const k of ['nd', 'fs', 'dia', 'swap', 'unlock']) if (d[k] != null) return `[data-${k}="${d[k]}"]`;
+    for (const k of ['nd', 'hnd', 'fs', 'dia', 'swap', 'unlock']) if (d[k] != null) return `[data-${k}="${d[k]}"]`;
     if (d.k) return `[data-k="${d.k}"][data-v="${d.v}"]`;
     return null;
   }
@@ -1158,13 +1377,58 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', String(a.dataset.ir === cur)));
   }
 
+  // gostinho no Início: a mesma semana das Divisões, trocando os dias ali mesmo
+  function renderInicio() {
+    const nd = st.livre.nd, X = livreX;
+    $('#hd').innerHTML = [2, 3, 4, 5, 6].map(n => `<button type="button" class="chip" data-hnd="${n}" aria-pressed="${n === nd}" aria-label="${n} dias">${n}<span class="dd-t"> dias</span></button>`).join('');
+    $('#hx').innerHTML = `<b>${esc(X.split.nome)}:</b> ${esc(X.split.desc)} Exemplo com volume Normal e academia completa.`;
+    $('#hw').innerHTML = semana(X, false);
+    $('#hgo').textContent = `Montar a minha com ${nd} dias`;
+    $('#hver').textContent = `Ver as outras divisões pra ${nd} dias`;
+  }
+
+  const PASSOS = [['Sua semana', 'Dias, tempo e experiência. Isso decide a divisão e quanto volume cabe.'], ['Sua academia', 'Marque o que a sua academia tem. O gerador só usa esses aparelhos.'], ['Foco e divisão', 'Escolha o foco de cada músculo. A divisão sai sozinha, mas dá pra trocar.']];
+  function renderPassos() {
+    const p = st.passo;
+    $('#montar').dataset.passo = p;
+    $('#steps').innerHTML = PASSOS.map(([n], i) => `<li><a href="#/montar/${i + 1}" class="${i + 1 < p ? 'feito' : ''}"${i + 1 === p ? ' aria-current="step"' : ''}><b>${i + 1}</b><span>${n}</span></a></li>`).join('');
+    $('#m-lead').textContent = PASSOS[p - 1][1];
+    document.querySelectorAll('#montar [data-step]').forEach(el => { el.hidden = +el.dataset.step !== p; });
+    const info = R.erro ? esc(R.erro) : `${esc(R.split.nome)}, ${R.an.total} séries por semana`;
+    const volta = p > 1 ? `<button type="button" class="btn sm ghost" data-passo-ir="${p - 1}">Voltar</button>` : '';
+    const vai = p < 3 ? `<button type="button" class="btn sm" data-passo-ir="${p + 1}">Continuar</button>` : '<button type="button" class="btn sm" id="gerar">Gerar ficha</button>';
+    $('#bar').innerHTML = `<span>Passo ${p} de 3<b>${info}</b></span><span class="acoes">${volta}${vai}</span>`;
+  }
+
+  const VIEWS = ['inicio', 'divisoes', 'montar', 'ficha'];
+  function aplicaTela() {
+    document.querySelectorAll('[data-view]').forEach(el => { el.hidden = el.dataset.view !== st.view; });
+    document.querySelectorAll('.nav a').forEach(a => { if (a.dataset.v === st.view) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  }
+  function rota() {
+    const h = location.hash;
+    if (!h.startsWith('#/')) return false;
+    const [v, n] = h.slice(2).split('/');
+    const antes = st.view + st.passo;
+    st.view = VIEWS.includes(v) ? v : 'inicio';
+    if (st.view === 'montar') st.passo = Math.min(3, Math.max(1, +n || 1));
+    guarda();
+    render();
+    if (antes !== st.view + st.passo) scrollTo(0, 0);
+    return true;
+  }
+  function guarda() { try { localStorage.setItem('ficha-cfg-2', JSON.stringify({ cfg: st.cfg, gerada: st.gerada, view: st.view, passo: st.passo })); } catch (e) { /* sem armazenamento */ } }
+
   function render() {
     const fk = chave(document.activeElement);
     R = F.gerar({ ...st.cfg, eq: F.eqDe(st.cfg.eq, st.cfg.halter) }, st.troca);
     renderLivre();
+    renderInicio();
     renderForm();
     renderPanel();
+    renderPassos();
     renderFicha();
+    aplicaTela();
     grifa(document.body);
     if (fk) { const el = document.querySelector(fk); if (el) el.focus({ preventScroll: true }); }
   }
@@ -1289,7 +1553,7 @@ if (typeof module !== 'undefined') module.exports = FICHA;
   const presetIgual = c => Object.keys(F.PRESETS).find(p => F.PRESETS[p].halter === c.halter && F.PRESETS[p].eq.length === c.eq.length && F.PRESETS[p].eq.every(x => c.eq.includes(x))) || 'custom';
   function mudou() {
     st.troca = {};
-    try { localStorage.setItem('ficha-cfg-2', JSON.stringify({ cfg: st.cfg })); } catch (e) { /* sem armazenamento */ }
+    guarda();
     render();
   }
 
@@ -1298,7 +1562,28 @@ if (typeof module !== 'undefined') module.exports = FICHA;
       const b = e.target.closest('button');
       if (!b) return;
       const d = b.dataset, c = st.cfg;
-      if (d.nd) { st.livre.nd = +d.nd; render(); return; }
+      if (d.passoIr) {
+        const n = +d.passoIr;
+        if (n > st.passo && R.erro) { const h = $('#h-dias'); location.hash = '#/montar/1'; if (h) h.focus(); return; }
+        location.hash = '#/montar/' + n;
+        return;
+      }
+      if (b.id === 'gerar') {
+        if (R.erro) { location.hash = '#/montar/1'; return; }
+        st.gerada = true;
+        guarda();
+        location.hash = '#/ficha';
+        return;
+      }
+      if (b.id === 'fgo' || b.id === 'hgo') {
+        c.dias = F.DIAS_PADRAO[st.livre.nd].slice();
+        c.split = st.livre.split;
+        st.troca = {};
+        guarda();
+        location.hash = '#/montar/1';
+        return;
+      }
+      if (d.nd || d.hnd) { st.livre.nd = +(d.nd || d.hnd); render(); return; }
       if (d.fs) { st.livre.split = d.fs; render(); return; }
       if (d.dia != null) {
         const i = +d.dia;
@@ -1363,13 +1648,15 @@ if (typeof module !== 'undefined') module.exports = FICHA;
     try {
       const sv = JSON.parse(localStorage.getItem('ficha-cfg-2') || 'null');
       if (sv && sv.cfg && Array.isArray(sv.cfg.dias)) st.cfg = { ...st.cfg, ...sv.cfg, tiers: { ...st.cfg.tiers, ...(sv.cfg.tiers || {}) } };
+      if (sv) { st.gerada = !!sv.gerada; if (VIEWS.includes(sv.view)) st.view = sv.view; if (sv.passo) st.passo = sv.passo; }
       if (!ATUAL.some(a => a[0] === st.cfg.atual)) st.cfg.atual = 'abc';
       const ks = new Set(F.EQ.map(e => e[0]));
       if (!Array.isArray(st.cfg.eq) || st.cfg.eq.some(k => !ks.has(k)) || typeof st.cfg.halter !== 'number') { st.cfg.preset = 'bairro'; st.cfg.eq = F.PRESETS.bairro.eq.slice(); st.cfg.halter = F.PRESETS.bairro.halter; }
     } catch (e) { /* sem armazenamento */ }
     if (data && data.cfg) st = { ...st, ...data };
     bind();
-    render();
+    if (!rota()) render();
+    addEventListener('hashchange', rota);
     topo();
     addEventListener('resize', topo);
     addEventListener('scroll', () => { if (!rafDia) rafDia = requestAnimationFrame(() => { rafDia = 0; marcaDia(); }); }, { passive: true });
